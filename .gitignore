@@ -1,0 +1,28 @@
+# 1. Virtual Environments (สำคัญมาก เพื่อไม่ให้ไฟล์ Library หนักๆ หลุดขึ้นไป)
+ml_ops/
+mlopl_env/
+venv/
+env/
+
+# 2. Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 3. Data Files (ป้องกันไฟล์ข้อมูลขนาดใหญ่)
+data/*.zip
+data/*.csv
+data/*.gz
+
+# 4. Model & Parameters (ถ้าไฟล์ใหญ่เกินไป หรือต้องการเก็บไว้แค่ในเครื่อง)
+# models/*.joblib
+# parameters/*.joblib
+
+# 5. IDE & OS Files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# 6. Environment Variables (ป้องกันข้อมูลความลับ)
+.env
