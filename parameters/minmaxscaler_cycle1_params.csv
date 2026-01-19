@@ -1,7 +1,0 @@
-feature_names,data_min,data_max,scale,min
-step,1.0,742.0,0.001349527665317139,-0.001349527665317139
-oldbalance_org,0.0,1.0,1.0,0.0
-newbalance_orig,0.0,1.0,1.0,0.0
-newbalance_dest,0.0,1.0,1.0,0.0
-diff_new_old_balance,0.0,1.0,1.0,0.0
-diff_new_old_destiny,0.0,1.0,1.0,0.0
