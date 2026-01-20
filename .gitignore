@@ -1,6 +1,5 @@
 # 1. Virtual Environments (สำคัญมาก เพื่อไม่ให้ไฟล์ Library หนักๆ หลุดขึ้นไป)
-ml_ops/
-mlopl_env/
+fraud_final/
 venv/
 env/
 
@@ -13,6 +12,7 @@ __pycache__/
 data/*.zip
 data/*.csv
 data/*.gz
+artifacts/
 
 # 4. Model & Parameters (ถ้าไฟล์ใหญ่เกินไป หรือต้องการเก็บไว้แค่ในเครื่อง)
 # models/*.joblib
