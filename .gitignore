@@ -7,7 +7,7 @@ env/
 __pycache__/
 *.py[cod]
 *$py.class
-
+*.egg-info/
 # 3. Data Files (ป้องกันไฟล์ข้อมูลขนาดใหญ่)
 data/*.zip
 data/*.csv
