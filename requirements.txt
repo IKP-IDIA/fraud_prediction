@@ -10,6 +10,7 @@ click==7.1.2
 cycler==0.10.0
 decorator==4.4.2
 defusedxml==0.6.0
+ensure
 entrypoints==0.3
 Flask==1.1.2
 imbalanced-learn>=0.10.0
@@ -55,8 +56,10 @@ pycparser==2.20
 Pygments==2.7.3
 pyparsing==2.4.7
 pyrsistent==0.17.3
+python-box
 python-dateutil==2.8.1
 pytz==2020.4
+PyYAML
 pyzmq==20.0.0
 qtconsole==5.0.1
 QtPy==1.9.0
