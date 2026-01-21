@@ -1,1 +1,12 @@
 artifacts_root: artifacts
+
+data_ingestion:
+  root_dir: artifacts/data_ingestion
+  onedrive_file_path: "https://drive.google.com/file/d/1xHzaCHq6gEXFmYN2Cc2Yb1jVxaAayb2y/view?usp=drive_link"  # Path บน OneDrive
+  local_data_file: artifacts/data_ingestion/data.zip
+  unzip_dir: artifacts/data_ingestion
+
+onedrive_credentials:
+  client_id: "YOUR_CLIENT_ID"
+  tenant_id: "YOUR_TENANT_ID"
+  client_secret: "YOUR_CLIENT_SECRET"
