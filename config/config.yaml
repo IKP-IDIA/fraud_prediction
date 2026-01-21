@@ -2,7 +2,7 @@ artifacts_root: artifacts
 
 data_ingestion:
   root_dir: artifacts/data_ingestion
-  onedrive_file_path: "https://drive.google.com/uc?export=download&id=1xHzaCHq6gEXFmYN2Cc2Yb1jVxaAayb2y"  # Path บน OneDrive
+  onedrive_file_path: "https://drive.google.com/uc?export=download&id=1xHzaCHq6gEXFmYN2Cc2Yb1jVxaAayb2y&confirm=t"  # Path บน OneDrive
   local_data_file: artifacts/data_ingestion/data.zip
   unzip_dir: artifacts/data_ingestion
 

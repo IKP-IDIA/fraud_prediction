@@ -77,9 +77,6 @@ class ConfigurationManager:
 
         return training_config
     
-
-
-
     def get_evaluation_config(self) -> EvaluationConfig:
         eval_config = EvaluationConfig(
             path_of_model="artifacts/training/model.h5",
