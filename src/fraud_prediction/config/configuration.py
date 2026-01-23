@@ -44,7 +44,7 @@ class ConfigurationManager:
             root_dir=Path(config.root_dir),
             base_model_path=Path(config.base_model_path),
             updated_base_model_path=Path(config.updated_base_model_path),
-            params_image_size=self.params.IMAGE_SIZE,
+            params_num_features=self.params.NUM_FEATURES,
             params_learning_rate=self.params.LEARNING_RATE,
             params_include_top=self.params.INCLUDE_TOP,
             params_weights=self.params.WEIGHTS,
@@ -72,7 +72,7 @@ class ConfigurationManager:
             params_epochs=params.EPOCHS,
             params_batch_size=params.BATCH_SIZE,
             params_is_augmentation=params.AUGMENTATION,
-            params_image_size=params.IMAGE_SIZE
+            params_num_features=params.NUM_FEATURES
         )
 
         return training_config
@@ -83,7 +83,7 @@ class ConfigurationManager:
             training_data="self.config.data_ingestion.unzip_dir",
             mlflow_uri="",
             all_params=self.params,
-            params_image_size=self.params.IMAGE_SIZE,
+            params_num_features=self.params.NUM_FEATURES,
             params_batch_size=self.params.BATCH_SIZE
         )
         return eval_config

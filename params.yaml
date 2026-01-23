@@ -1,1 +1,14 @@
-key : val
+# จำนวน Epochs ในการเทรน
+EPOCHS: 10
+# จำนวนข้อมูลต่อรอบการเทรน
+BATCH_SIZE: 32
+# การขยายข้อมูล (สำหรับตารางมักเป็น False หรือไม่ต้องใส่)
+AUGMENTATION: False
+# สำคัญ: จำนวนคอลัมน์ Feature ใน CSV ของคุณ (เช่น 7)
+NUM_FEATURES: [7]
+# อัตราการเรียนรู้ของโมเดล
+LEARNING_RATE: 0.01
+# พารามิเตอร์เดิมจาก VGG16 (เก็บไว้กันโค้ดพังแต่ไม่ได้ใช้ใน ANN)
+INCLUDE_TOP: False
+WEIGHTS: imagenet
+CLASSES: 1  # 1 สำหรับ Binary Classification (Fraud หรือไม่)
