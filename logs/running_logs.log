@@ -216,3 +216,278 @@
 [2026-01-22 18:14:36,277: INFO: 1034978456: Model saved at: artifacts\prepare_base_model\base_model.h5]
 [2026-01-22 18:14:36,305: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
 [2026-01-22 18:14:36,317: INFO: 1034978456: Model saved at: artifacts\prepare_base_model\base_model_updated.h5]
+[2026-01-23 14:32:24,730: INFO: utils: Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.]
+[2026-01-23 14:32:24,730: INFO: utils: NumExpr defaulting to 16 threads.]
+[2026-01-23 14:32:27,615: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-01-23 14:32:27,618: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-23 14:32:27,642: ERROR: main: 'charmap' codec can't decode byte 0x81 in position 33: character maps to <undefined>]
+Traceback (most recent call last):
+  File "C:\Users\artit\IKP_2025\fraud_prediction\main.py", line 10, in <module>
+    obj.main()
+  File "C:\Users\artit\IKP_2025\fraud_prediction\src\fraud_prediction\pipeline\stage_01_data_ingestion.py", line 12, in main
+    config = ConfigurationManager()
+  File "C:\Users\artit\IKP_2025\fraud_prediction\src\fraud_prediction\config\configuration.py", line 17, in __init__
+    self.params = read_yaml(params_filepath)
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\ensure\main.py", line 872, in __call__
+    return_val = self.f(*args, **kwargs)
+  File "C:\Users\artit\IKP_2025\fraud_prediction\src\fraud_prediction\utils\common.py", line 35, in read_yaml
+    raise e
+  File "C:\Users\artit\IKP_2025\fraud_prediction\src\fraud_prediction\utils\common.py", line 29, in read_yaml
+    content = yaml.safe_load(yaml_file)
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\yaml\__init__.py", line 125, in safe_load
+    return load(stream, SafeLoader)
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\yaml\__init__.py", line 79, in load
+    loader = Loader(stream)
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\yaml\loader.py", line 34, in __init__
+    Reader.__init__(self, stream)
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\yaml\reader.py", line 85, in __init__
+    self.determine_encoding()
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\yaml\reader.py", line 124, in determine_encoding
+    self.update_raw()
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\yaml\reader.py", line 178, in update_raw
+    data = self.stream.read(size)
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\encodings\cp1252.py", line 23, in decode
+    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+UnicodeDecodeError: 'charmap' codec can't decode byte 0x81 in position 33: character maps to <undefined>
+[2026-01-23 15:01:46,033: INFO: utils: Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.]
+[2026-01-23 15:01:46,033: INFO: utils: NumExpr defaulting to 16 threads.]
+[2026-01-23 15:01:47,930: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-01-23 15:01:47,931: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-23 15:01:47,933: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-23 15:01:47,933: INFO: common: created directory at: artifacts]
+[2026-01-23 15:01:47,933: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-01-23 15:01:47,937: INFO: data_ingestion: Removed corrupted file : artifacts/data_ingestion/fraud_data.zip]
+[2026-01-23 15:01:47,937: INFO: data_ingestion: Downloading data from : 1xHzaCHq6gEXFmYN2Cc2Yb1jVxaAayb2y]
+[2026-01-23 15:01:50,374: INFO: data_ingestion: Downloaded successfully into artifacts/data_ingestion/fraud_data.zip]
+[2026-01-23 15:01:50,375: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-01-23 15:01:50,375: INFO: main: ***************]
+[2026-01-23 15:01:50,376: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-01-23 15:01:50,379: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-23 15:01:50,383: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-23 15:01:50,384: INFO: common: created directory at: artifacts]
+[2026-01-23 15:01:50,385: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-23 15:01:50,385: ERROR: main: "'ConfigBox' object has no attribute 'updated_base_model_path'"]
+Traceback (most recent call last):
+  File "box\\box.py", line 594, in box.box.Box.__getitem__
+KeyError: 'updated_base_model_path'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "box\\box.py", line 633, in box.box.Box.__getattr__
+  File "box\\box.py", line 621, in box.box.Box.__getitem__
+box.exceptions.BoxKeyError: "'updated_base_model_path'"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "box\\box.py", line 635, in box.box.Box.__getattr__
+AttributeError: 'ConfigBox' object has no attribute 'updated_base_model_path'. Did you mean: 'update_base_model_path'?
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "box\\config_box.py", line 29, in box.config_box.ConfigBox.__getattr__
+  File "box\\box.py", line 649, in box.box.Box.__getattr__
+box.exceptions.BoxKeyError: "'ConfigBox' object has no attribute 'updated_base_model_path'"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "box\\box.py", line 594, in box.box.Box.__getitem__
+KeyError: 'updated_base_model_path'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "box\\box.py", line 633, in box.box.Box.__getattr__
+  File "box\\box.py", line 621, in box.box.Box.__getitem__
+box.exceptions.BoxKeyError: "'updated_base_model_path'"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "box\\box.py", line 635, in box.box.Box.__getattr__
+AttributeError: 'ConfigBox' object has no attribute 'updated_base_model_path'. Did you mean: 'update_base_model_path'?
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\artit\IKP_2025\fraud_prediction\main.py", line 21, in <module>
+    prepare_base_model.main()
+  File "C:\Users\artit\IKP_2025\fraud_prediction\src\fraud_prediction\pipeline\stage_02_prepare_base_model.py", line 13, in main
+    prepare_base_model_config = config.get_prepare_base_model_config()
+  File "C:\Users\artit\IKP_2025\fraud_prediction\src\fraud_prediction\config\configuration.py", line 46, in get_prepare_base_model_config
+    updated_base_model_path=Path(config.updated_base_model_path),
+  File "box\\config_box.py", line 31, in box.config_box.ConfigBox.__getattr__
+  File "box\\box.py", line 649, in box.box.Box.__getattr__
+box.exceptions.BoxKeyError: "'ConfigBox' object has no attribute 'updated_base_model_path'". Did you mean: 'update_base_model_path'?
+[2026-01-23 15:03:46,555: INFO: utils: Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.]
+[2026-01-23 15:03:46,556: INFO: utils: NumExpr defaulting to 16 threads.]
+[2026-01-23 15:03:48,661: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-01-23 15:03:48,668: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-23 15:03:48,671: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-23 15:03:48,671: INFO: common: created directory at: artifacts]
+[2026-01-23 15:03:48,671: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-01-23 15:03:48,674: INFO: data_ingestion: Removed corrupted file : artifacts/data_ingestion/fraud_data.zip]
+[2026-01-23 15:03:48,674: INFO: data_ingestion: Downloading data from : 1xHzaCHq6gEXFmYN2Cc2Yb1jVxaAayb2y]
+[2026-01-23 15:03:50,718: INFO: data_ingestion: Downloaded successfully into artifacts/data_ingestion/fraud_data.zip]
+[2026-01-23 15:03:50,718: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-01-23 15:03:50,718: INFO: main: ***************]
+[2026-01-23 15:03:50,719: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-01-23 15:03:50,722: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-23 15:03:50,727: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-23 15:03:50,728: INFO: common: created directory at: artifacts]
+[2026-01-23 15:03:50,729: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-23 15:03:50,858: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-23 15:03:50,887: INFO: prepare_base_model: Model saved at: artifacts\prepare_base_model\base_model.h5]
+[2026-01-23 15:03:50,921: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-23 15:03:50,941: INFO: prepare_base_model: Model saved at: artifacts\prepare_base_model\base_model_updated.h5]
+[2026-01-23 15:03:50,941: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-01-23 15:12:53,829: INFO: utils: Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.]
+[2026-01-23 15:12:53,831: INFO: utils: NumExpr defaulting to 16 threads.]
+[2026-01-23 17:51:50,607: INFO: utils: Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.]
+[2026-01-23 17:51:50,609: INFO: utils: NumExpr defaulting to 16 threads.]
+[2026-01-23 17:53:46,471: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-23 17:53:46,473: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-23 17:53:46,475: INFO: common: created directory at: artifacts]
+[2026-01-23 17:56:53,281: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-23 17:56:53,287: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-23 17:56:53,289: INFO: common: created directory at: artifacts]
+[2026-01-23 17:56:53,291: INFO: common: created directory at: artifacts\training]
+[2026-01-23 17:59:31,844: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-23 17:59:31,850: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-23 17:59:31,852: INFO: common: created directory at: artifacts]
+[2026-01-23 17:59:31,853: INFO: common: created directory at: artifacts\training]
+[2026-01-23 18:03:13,908: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-23 18:03:13,911: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-23 18:03:13,914: INFO: common: created directory at: artifacts]
+[2026-01-23 18:03:13,918: INFO: common: created directory at: artifacts\training]
+[2026-01-23 18:03:14,074: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-01-23 18:05:15,765: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-23 18:05:15,771: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-23 18:05:15,774: INFO: common: created directory at: artifacts]
+[2026-01-23 18:05:15,777: INFO: common: created directory at: artifacts\training]
+[2026-01-23 18:05:15,835: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-01-23 18:05:36,878: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-23 18:05:36,884: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-23 18:05:36,886: INFO: common: created directory at: artifacts]
+[2026-01-23 18:05:36,888: INFO: common: created directory at: artifacts\training]
+[2026-01-23 18:05:36,954: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-01-23 18:05:51,860: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-23 18:05:51,863: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-23 18:05:51,866: INFO: common: created directory at: artifacts]
+[2026-01-23 18:05:51,869: INFO: common: created directory at: artifacts\training]
+[2026-01-23 18:05:51,924: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-01-23 18:07:05,756: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-23 18:07:05,763: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-23 18:07:05,765: INFO: common: created directory at: artifacts]
+[2026-01-23 18:07:05,768: INFO: common: created directory at: artifacts\training]
+[2026-01-23 18:07:05,820: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-01-23 18:10:41,062: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-23 18:10:41,064: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-23 18:10:41,065: INFO: common: created directory at: artifacts]
+[2026-01-23 18:10:41,066: INFO: common: created directory at: artifacts\training]
+[2026-01-23 18:10:41,103: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-01-23 18:13:12,886: INFO: utils: Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.]
+[2026-01-23 18:13:12,887: INFO: utils: NumExpr defaulting to 16 threads.]
+[2026-01-23 18:13:14,319: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-23 18:13:14,323: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-23 18:13:14,327: INFO: common: created directory at: artifacts]
+[2026-01-23 18:13:14,329: INFO: common: created directory at: artifacts\training]
+[2026-01-23 18:13:14,445: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-01-23 18:13:24,257: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-23 18:13:24,263: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-23 18:13:24,267: INFO: common: created directory at: artifacts]
+[2026-01-23 18:13:24,270: INFO: common: created directory at: artifacts\training]
+[2026-01-23 18:13:24,331: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-01-23 18:14:11,073: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-23 18:14:11,079: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-23 18:14:11,082: INFO: common: created directory at: artifacts]
+[2026-01-23 18:14:11,084: INFO: common: created directory at: artifacts\training]
+[2026-01-23 18:14:11,146: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-01-23 18:15:33,542: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-23 18:15:33,545: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-23 18:15:33,547: INFO: common: created directory at: artifacts]
+[2026-01-23 18:15:33,549: INFO: common: created directory at: artifacts\training]
+[2026-01-23 18:15:33,606: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-01-23 18:18:52,358: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-23 18:18:52,360: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-23 18:18:52,362: INFO: common: created directory at: artifacts]
+[2026-01-23 18:18:52,364: INFO: common: created directory at: artifacts\training]
+[2026-01-23 18:18:52,405: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-01-23 18:20:08,231: INFO: utils: Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.]
+[2026-01-23 18:20:08,232: INFO: utils: NumExpr defaulting to 16 threads.]
+[2026-01-23 18:20:10,380: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-01-23 18:20:10,384: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-23 18:20:10,424: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-23 18:20:10,426: INFO: common: created directory at: artifacts]
+[2026-01-23 18:20:10,426: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-01-23 18:20:10,429: INFO: data_ingestion: Removed corrupted file : artifacts/data_ingestion/fraud_data.zip]
+[2026-01-23 18:20:10,429: INFO: data_ingestion: Downloading data from : 1xHzaCHq6gEXFmYN2Cc2Yb1jVxaAayb2y]
+[2026-01-23 18:20:12,539: INFO: data_ingestion: Downloaded successfully into artifacts/data_ingestion/fraud_data.zip]
+[2026-01-23 18:20:12,541: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-01-23 18:20:12,541: INFO: main: ***************]
+[2026-01-23 18:20:12,541: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-01-23 18:20:12,545: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-23 18:20:12,549: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-23 18:20:12,551: INFO: common: created directory at: artifacts]
+[2026-01-23 18:20:12,554: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-23 18:20:12,640: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-23 18:20:12,696: INFO: prepare_base_model: Model saved at: artifacts\prepare_base_model\base_model.h5]
+[2026-01-23 18:20:12,738: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-23 18:20:12,765: INFO: prepare_base_model: Model saved at: artifacts\prepare_base_model\base_model_updated.h5]
+[2026-01-23 18:20:12,766: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-01-23 18:20:32,342: INFO: utils: Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.]
+[2026-01-23 18:20:32,343: INFO: utils: NumExpr defaulting to 16 threads.]
+[2026-01-23 18:20:33,548: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-23 18:20:33,551: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-23 18:20:33,552: INFO: common: created directory at: artifacts]
+[2026-01-23 18:20:33,555: INFO: common: created directory at: artifacts\training]
+[2026-01-23 18:20:33,651: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-01-23 18:20:42,513: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-23 18:20:42,516: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-23 18:20:42,517: INFO: common: created directory at: artifacts]
+[2026-01-23 18:20:42,518: INFO: common: created directory at: artifacts\training]
+[2026-01-23 18:20:42,553: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-01-23 18:23:14,229: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-23 18:23:14,234: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-23 18:23:14,236: INFO: common: created directory at: artifacts]
+[2026-01-23 18:23:14,240: INFO: common: created directory at: artifacts\training]
+[2026-01-23 18:23:14,288: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-01-23 18:23:53,836: INFO: utils: Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.]
+[2026-01-23 18:23:53,836: INFO: utils: NumExpr defaulting to 16 threads.]
+[2026-01-23 18:23:55,850: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-01-23 18:23:55,851: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-23 18:23:55,877: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-23 18:23:55,879: INFO: common: created directory at: artifacts]
+[2026-01-23 18:23:55,882: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-01-23 18:23:55,882: INFO: data_ingestion: Removed corrupted file : artifacts/data_ingestion/fraud_data.zip]
+[2026-01-23 18:23:55,884: INFO: data_ingestion: Downloading data from : 1xHzaCHq6gEXFmYN2Cc2Yb1jVxaAayb2y]
+[2026-01-23 18:23:57,885: INFO: data_ingestion: Downloaded successfully into artifacts/data_ingestion/fraud_data.zip]
+[2026-01-23 18:23:57,885: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-01-23 18:23:57,886: INFO: main: ***************]
+[2026-01-23 18:23:57,886: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-01-23 18:23:57,890: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-23 18:23:57,893: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-23 18:23:57,894: INFO: common: created directory at: artifacts]
+[2026-01-23 18:23:57,895: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-23 18:23:58,004: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-23 18:23:58,058: INFO: prepare_base_model: Model saved at: artifacts\prepare_base_model\base_model.h5]
+[2026-01-23 18:23:58,098: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-23 18:23:58,125: INFO: prepare_base_model: Model saved at: artifacts\prepare_base_model\base_model_updated.h5]
+[2026-01-23 18:23:58,125: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]

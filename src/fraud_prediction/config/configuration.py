@@ -43,7 +43,7 @@ class ConfigurationManager:
         prepare_base_model_config = PrepareBaseModelConfig(
             root_dir=Path(config.root_dir),
             base_model_path=Path(config.base_model_path),
-            updated_base_model_path=Path(config.updated_base_model_path),
+            update_base_model_path=Path(config.update_base_model_path),
             params_num_features=self.params.NUM_FEATURES,
             params_learning_rate=self.params.LEARNING_RATE,
             params_include_top=self.params.INCLUDE_TOP,
@@ -67,7 +67,7 @@ class ConfigurationManager:
         training_config = TrainingConfig(
             root_dir=Path(training.root_dir),
             trained_model_path=Path(training.trained_model_path),
-            updated_base_model_path=Path(prepare_base_model.updated_base_model_path),
+            update_base_model_path=Path(prepare_base_model.update_base_model_path),
             training_data=Path(training_data),
             params_epochs=params.EPOCHS,
             params_batch_size=params.BATCH_SIZE,
