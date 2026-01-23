@@ -3,7 +3,7 @@ import zipfile
 import gdown
 from fraud_prediction import logger
 from fraud_prediction.utils.common import get_size
-from fraud_prediction.config.configuration import ConfigurationManager
+from fraud_prediction.config.configuration import DataIngestionConfig
 
 class DataIngestion:
     def __init__(self, config: DataIngestionConfig):
