@@ -72,7 +72,8 @@ class ConfigurationManager:
             params_epochs=params.EPOCHS,
             params_batch_size=params.BATCH_SIZE,
             params_is_augmentation=params.AUGMENTATION,
-            params_num_features=params.NUM_FEATURES
+            params_num_features=params.NUM_FEATURES,
+            params_sampling_ratio=params.SAMPLING_RATIO
         )
 
         return training_config

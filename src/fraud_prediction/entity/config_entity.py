@@ -33,6 +33,7 @@ class TrainingConfig:
     params_batch_size: int
     params_is_augmentation: bool
     params_num_features: list
+    params_sampling_ratio: int 
 
 
 @dataclass(frozen=True)
