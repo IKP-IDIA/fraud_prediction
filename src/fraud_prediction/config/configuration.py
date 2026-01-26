@@ -80,9 +80,9 @@ class ConfigurationManager:
     
     def get_evaluation_config(self) -> EvaluationConfig:
         eval_config = EvaluationConfig(
-            path_of_model="self.config.training.trained_model_path",
-            training_data="self.config.data_ingestion.unzip_dir",
-            mlflow_uri="",
+            path_of_model=Path(self.config.training.trained_model_path),
+            training_data=Path(self.config.data_ingestion.unzip_dir),
+            mlflow_uri="https://dagshub.com/ArtitayaN/fraud_prediction.mlflow",
             all_params=self.params,
             params_num_features=self.params.NUM_FEATURES,
             params_batch_size=self.params.BATCH_SIZE
