@@ -19,7 +19,6 @@ class PrepareBaseModelConfig:
     params_num_features: list
     params_learning_rate: float
     params_include_top: bool
-    params_weights: str
     params_classes: int
 
 

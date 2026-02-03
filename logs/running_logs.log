@@ -690,3 +690,800 @@ x==========x]
 [2026-01-26 15:09:28,127: INFO: main: >>>>>> stage Model Training completed <<<<<<
 
 x==========x]
+[2026-01-27 16:13:15,013: INFO: utils: Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.]
+[2026-01-27 16:13:15,013: INFO: utils: NumExpr defaulting to 16 threads.]
+[2026-01-27 16:13:18,140: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-01-27 16:13:18,153: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 16:13:18,165: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 16:13:18,166: INFO: common: created directory at: artifacts]
+[2026-01-27 16:13:18,166: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-01-27 16:13:18,167: INFO: data_ingestion: Removed corrupted file : artifacts/data_ingestion/fraud_data.zip]
+[2026-01-27 16:13:18,167: INFO: data_ingestion: Downloading data from : 1xHzaCHq6gEXFmYN2Cc2Yb1jVxaAayb2y]
+[2026-01-27 16:13:20,346: INFO: data_ingestion: Downloaded successfully into artifacts/data_ingestion/fraud_data.zip]
+[2026-01-27 16:13:20,347: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-01-27 16:13:20,347: INFO: main: ***************]
+[2026-01-27 16:13:20,347: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-01-27 16:13:20,349: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 16:13:20,351: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 16:13:20,351: INFO: common: created directory at: artifacts]
+[2026-01-27 16:13:20,352: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-27 16:13:20,436: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-27 16:13:20,463: INFO: prepare_base_model: Model saved at: artifacts\prepare_base_model\base_model.h5]
+[2026-01-27 16:13:20,487: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-27 16:13:20,510: INFO: prepare_base_model: Model saved at: artifacts\prepare_base_model\base_model_updated.h5]
+[2026-01-27 16:13:20,511: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-01-27 16:13:20,511: INFO: main: *******************]
+[2026-01-27 16:13:20,511: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-01-27 16:13:20,513: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 16:13:20,515: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 16:13:20,515: INFO: common: created directory at: artifacts]
+[2026-01-27 16:13:20,515: INFO: common: created directory at: artifacts\training]
+[2026-01-27 16:13:20,560: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-01-27 16:13:23,031: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-27 16:13:23,066: INFO: main: >>>>>> stage Model Training completed <<<<<<
+
+x==========x]
+[2026-01-27 16:13:23,066: INFO: main: *******************]
+[2026-01-27 16:13:23,066: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-01-27 16:13:23,068: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 16:13:23,070: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 16:13:23,070: INFO: common: created directory at: artifacts]
+[2026-01-27 16:13:23,111: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-01-27 16:13:23,115: ERROR: main: 'WindowsPath' object has no attribute 'endswith']
+Traceback (most recent call last):
+  File "C:\Users\artit\IKP_2025\fraud_prediction\main.py", line 45, in <module>
+    model_evalution.main()
+  File "C:\Users\artit\IKP_2025\fraud_prediction\src\fraud_prediction\pipeline\stage_04_model_evaluation.py", line 18, in main
+    evaluation.evaluation()
+  File "C:\Users\artit\IKP_2025\fraud_prediction\src\fraud_prediction\components\model_evaluation_mlflow.py", line 70, in evaluation
+    self._prepare_validation_data()
+  File "C:\Users\artit\IKP_2025\fraud_prediction\src\fraud_prediction\components\model_evaluation_mlflow.py", line 28, in _prepare_validation_data
+    if data_dir.endswith('csv') and os.path.isfile(data_dir):
+AttributeError: 'WindowsPath' object has no attribute 'endswith'
+[2026-01-27 16:15:24,073: INFO: utils: Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.]
+[2026-01-27 16:15:24,074: INFO: utils: NumExpr defaulting to 16 threads.]
+[2026-01-27 16:15:45,236: INFO: utils: Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.]
+[2026-01-27 16:15:45,236: INFO: utils: NumExpr defaulting to 16 threads.]
+[2026-01-27 16:15:47,680: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-01-27 16:15:47,682: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 16:15:47,703: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 16:15:47,703: INFO: common: created directory at: artifacts]
+[2026-01-27 16:15:47,704: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-01-27 16:15:47,705: INFO: data_ingestion: Removed corrupted file : artifacts/data_ingestion/fraud_data.zip]
+[2026-01-27 16:15:47,705: INFO: data_ingestion: Downloading data from : 1xHzaCHq6gEXFmYN2Cc2Yb1jVxaAayb2y]
+[2026-01-27 16:15:49,847: INFO: data_ingestion: Downloaded successfully into artifacts/data_ingestion/fraud_data.zip]
+[2026-01-27 16:15:49,847: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-01-27 16:15:49,849: INFO: main: ***************]
+[2026-01-27 16:15:49,849: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-01-27 16:15:49,852: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 16:15:49,853: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 16:15:49,855: INFO: common: created directory at: artifacts]
+[2026-01-27 16:15:49,856: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-27 16:15:49,905: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-27 16:15:49,935: INFO: prepare_base_model: Model saved at: artifacts\prepare_base_model\base_model.h5]
+[2026-01-27 16:15:49,958: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-27 16:15:49,972: INFO: prepare_base_model: Model saved at: artifacts\prepare_base_model\base_model_updated.h5]
+[2026-01-27 16:15:49,972: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-01-27 16:15:49,972: INFO: main: *******************]
+[2026-01-27 16:15:49,973: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-01-27 16:15:49,976: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 16:15:49,977: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 16:15:49,977: INFO: common: created directory at: artifacts]
+[2026-01-27 16:15:49,977: INFO: common: created directory at: artifacts\training]
+[2026-01-27 16:15:50,023: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-01-27 16:15:53,077: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-27 16:15:53,098: INFO: main: >>>>>> stage Model Training completed <<<<<<
+
+x==========x]
+[2026-01-27 16:15:53,098: INFO: main: *******************]
+[2026-01-27 16:15:53,098: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-01-27 16:15:53,100: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 16:15:53,102: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 16:15:53,103: INFO: common: created directory at: artifacts]
+[2026-01-27 16:15:53,152: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-01-27 16:16:13,004: INFO: common: json file saved at: scores.json]
+[2026-01-27 16:16:13,005: INFO: common: json file saved at: scores.json]
+[2026-01-27 16:16:13,007: INFO: main: >>>>>> stage Evaluation stage completed <<<<<<
+
+x==========x]
+[2026-01-27 17:25:58,898: INFO: utils: Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.]
+[2026-01-27 17:25:58,899: INFO: utils: NumExpr defaulting to 16 threads.]
+[2026-01-27 17:26:01,212: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-01-27 17:26:01,214: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 17:26:01,231: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 17:26:01,231: INFO: common: created directory at: artifacts]
+[2026-01-27 17:26:01,232: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-01-27 17:26:01,232: INFO: data_ingestion: Removed corrupted file : artifacts/data_ingestion/fraud_data.zip]
+[2026-01-27 17:26:01,232: INFO: data_ingestion: Downloading data from : 1xHzaCHq6gEXFmYN2Cc2Yb1jVxaAayb2y]
+[2026-01-27 17:26:03,285: INFO: data_ingestion: Downloaded successfully into artifacts/data_ingestion/fraud_data.zip]
+[2026-01-27 17:26:03,285: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-01-27 17:26:03,286: INFO: main: ***************]
+[2026-01-27 17:26:03,286: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-01-27 17:26:03,288: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 17:26:03,289: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 17:26:03,289: INFO: common: created directory at: artifacts]
+[2026-01-27 17:26:03,289: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-27 17:26:03,291: ERROR: main: "'ConfigBox' object has no attribute 'weights'"]
+Traceback (most recent call last):
+  File "box\\box.py", line 594, in box.box.Box.__getitem__
+KeyError: 'WEIGHTS'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "box\\box.py", line 633, in box.box.Box.__getattr__
+  File "box\\box.py", line 621, in box.box.Box.__getitem__
+box.exceptions.BoxKeyError: "'WEIGHTS'"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "box\\box.py", line 635, in box.box.Box.__getattr__
+AttributeError: 'ConfigBox' object has no attribute 'WEIGHTS'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "box\\config_box.py", line 29, in box.config_box.ConfigBox.__getattr__
+  File "box\\box.py", line 649, in box.box.Box.__getattr__
+box.exceptions.BoxKeyError: "'ConfigBox' object has no attribute 'WEIGHTS'"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "box\\box.py", line 594, in box.box.Box.__getitem__
+KeyError: 'weights'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "box\\box.py", line 633, in box.box.Box.__getattr__
+  File "box\\box.py", line 621, in box.box.Box.__getitem__
+box.exceptions.BoxKeyError: "'weights'"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "box\\box.py", line 635, in box.box.Box.__getattr__
+AttributeError: 'ConfigBox' object has no attribute 'weights'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\artit\IKP_2025\fraud_prediction\main.py", line 23, in <module>
+    prepare_base_model.main()
+  File "C:\Users\artit\IKP_2025\fraud_prediction\src\fraud_prediction\pipeline\stage_02_prepare_base_model.py", line 13, in main
+    prepare_base_model_config = config.get_prepare_base_model_config()
+  File "C:\Users\artit\IKP_2025\fraud_prediction\src\fraud_prediction\config\configuration.py", line 50, in get_prepare_base_model_config
+    params_weights=self.params.WEIGHTS,
+  File "box\\config_box.py", line 31, in box.config_box.ConfigBox.__getattr__
+  File "box\\box.py", line 649, in box.box.Box.__getattr__
+box.exceptions.BoxKeyError: "'ConfigBox' object has no attribute 'weights'"
+[2026-01-27 17:28:06,548: INFO: utils: Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.]
+[2026-01-27 17:28:06,548: INFO: utils: NumExpr defaulting to 16 threads.]
+[2026-01-27 17:28:08,865: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-01-27 17:28:08,867: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 17:28:08,869: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 17:28:08,869: INFO: common: created directory at: artifacts]
+[2026-01-27 17:28:08,870: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-01-27 17:28:08,870: INFO: data_ingestion: Removed corrupted file : artifacts/data_ingestion/fraud_data.zip]
+[2026-01-27 17:28:08,870: INFO: data_ingestion: Downloading data from : 1xHzaCHq6gEXFmYN2Cc2Yb1jVxaAayb2y]
+[2026-01-27 17:28:10,850: INFO: data_ingestion: Downloaded successfully into artifacts/data_ingestion/fraud_data.zip]
+[2026-01-27 17:28:10,850: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-01-27 17:28:10,850: INFO: main: ***************]
+[2026-01-27 17:28:10,850: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-01-27 17:28:10,854: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 17:28:10,855: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 17:28:10,855: INFO: common: created directory at: artifacts]
+[2026-01-27 17:28:10,857: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-27 17:28:10,857: ERROR: main: 'int' object is not subscriptable]
+Traceback (most recent call last):
+  File "C:\Users\artit\IKP_2025\fraud_prediction\main.py", line 23, in <module>
+    prepare_base_model.main()
+  File "C:\Users\artit\IKP_2025\fraud_prediction\src\fraud_prediction\pipeline\stage_02_prepare_base_model.py", line 15, in main
+    prepare_base_model.get_base_model()
+  File "C:\Users\artit\IKP_2025\fraud_prediction\src\fraud_prediction\components\prepare_base_model.py", line 14, in get_base_model
+    input_dim = self.config.params_num_features[0]
+TypeError: 'int' object is not subscriptable
+[2026-01-27 17:29:38,423: INFO: utils: Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.]
+[2026-01-27 17:29:38,423: INFO: utils: NumExpr defaulting to 16 threads.]
+[2026-01-27 17:29:40,685: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-01-27 17:29:40,688: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 17:29:40,690: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 17:29:40,691: INFO: common: created directory at: artifacts]
+[2026-01-27 17:29:40,691: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-01-27 17:29:40,692: INFO: data_ingestion: Removed corrupted file : artifacts/data_ingestion/fraud_data.zip]
+[2026-01-27 17:29:40,692: INFO: data_ingestion: Downloading data from : 1xHzaCHq6gEXFmYN2Cc2Yb1jVxaAayb2y]
+[2026-01-27 17:29:42,723: INFO: data_ingestion: Downloaded successfully into artifacts/data_ingestion/fraud_data.zip]
+[2026-01-27 17:29:42,723: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-01-27 17:29:42,724: INFO: main: ***************]
+[2026-01-27 17:29:42,724: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-01-27 17:29:42,725: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 17:29:42,726: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 17:29:42,727: INFO: common: created directory at: artifacts]
+[2026-01-27 17:29:42,727: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-27 17:29:42,782: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-27 17:29:42,820: INFO: prepare_base_model: Model saved at: artifacts\prepare_base_model\base_model.h5]
+[2026-01-27 17:29:42,845: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-27 17:29:42,861: INFO: prepare_base_model: Model saved at: artifacts\prepare_base_model\base_model_updated.h5]
+[2026-01-27 17:29:42,861: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-01-27 17:29:42,861: INFO: main: *******************]
+[2026-01-27 17:29:42,861: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-01-27 17:29:42,863: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 17:29:42,865: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 17:29:42,866: INFO: common: created directory at: artifacts]
+[2026-01-27 17:29:42,866: INFO: common: created directory at: artifacts\training]
+[2026-01-27 17:29:42,909: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-01-27 17:29:45,156: INFO: main: >>>>>> stage Model Training completed <<<<<<
+
+x==========x]
+[2026-01-27 17:29:45,156: INFO: main: *******************]
+[2026-01-27 17:29:45,157: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-01-27 17:29:45,159: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 17:29:45,160: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 17:29:45,160: INFO: common: created directory at: artifacts]
+[2026-01-27 17:29:45,254: ERROR: main: 'WindowsPath' object has no attribute 'endswith']
+Traceback (most recent call last):
+  File "C:\Users\artit\IKP_2025\fraud_prediction\main.py", line 45, in <module>
+    model_evalution.main()
+  File "C:\Users\artit\IKP_2025\fraud_prediction\src\fraud_prediction\pipeline\stage_04_model_evaluation.py", line 18, in main
+    evaluation.evaluation()
+  File "C:\Users\artit\IKP_2025\fraud_prediction\src\fraud_prediction\components\model_evaluation_mlflow.py", line 71, in evaluation
+    self._prepare_validation_data()
+  File "C:\Users\artit\IKP_2025\fraud_prediction\src\fraud_prediction\components\model_evaluation_mlflow.py", line 29, in _prepare_validation_data
+    if data_dir.endswith('csv') and os.path.isfile(data_dir):
+AttributeError: 'WindowsPath' object has no attribute 'endswith'
+[2026-01-27 17:30:39,927: INFO: utils: Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.]
+[2026-01-27 17:30:39,927: INFO: utils: NumExpr defaulting to 16 threads.]
+[2026-01-27 17:30:42,372: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-01-27 17:30:42,374: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 17:30:42,376: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 17:30:42,376: INFO: common: created directory at: artifacts]
+[2026-01-27 17:30:42,377: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-01-27 17:30:42,377: INFO: data_ingestion: Removed corrupted file : artifacts/data_ingestion/fraud_data.zip]
+[2026-01-27 17:30:42,378: INFO: data_ingestion: Downloading data from : 1xHzaCHq6gEXFmYN2Cc2Yb1jVxaAayb2y]
+[2026-01-27 17:30:44,464: INFO: data_ingestion: Downloaded successfully into artifacts/data_ingestion/fraud_data.zip]
+[2026-01-27 17:30:44,464: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-01-27 17:30:44,465: INFO: main: ***************]
+[2026-01-27 17:30:44,465: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-01-27 17:30:44,467: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 17:30:44,468: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 17:30:44,469: INFO: common: created directory at: artifacts]
+[2026-01-27 17:30:44,469: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-27 17:30:44,528: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-27 17:30:44,558: INFO: prepare_base_model: Model saved at: artifacts\prepare_base_model\base_model.h5]
+[2026-01-27 17:30:44,584: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-27 17:30:44,599: INFO: prepare_base_model: Model saved at: artifacts\prepare_base_model\base_model_updated.h5]
+[2026-01-27 17:30:44,599: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-01-27 17:30:44,599: INFO: main: *******************]
+[2026-01-27 17:30:44,599: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-01-27 17:30:44,601: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 17:30:44,602: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 17:30:44,602: INFO: common: created directory at: artifacts]
+[2026-01-27 17:30:44,603: INFO: common: created directory at: artifacts\training]
+[2026-01-27 17:30:44,648: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-01-27 17:30:47,067: INFO: main: >>>>>> stage Model Training completed <<<<<<
+
+x==========x]
+[2026-01-27 17:30:47,068: INFO: main: *******************]
+[2026-01-27 17:30:47,068: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-01-27 17:30:47,071: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 17:30:47,072: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 17:30:47,072: INFO: common: created directory at: artifacts]
+[2026-01-27 17:31:06,949: INFO: common: json file saved at: scores.json]
+[2026-01-27 17:31:06,950: INFO: common: json file saved at: scores.json]
+[2026-01-27 17:31:06,952: INFO: main: >>>>>> stage Evaluation stage completed <<<<<<
+
+x==========x]
+[2026-01-27 17:34:14,310: INFO: utils: Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.]
+[2026-01-27 17:34:14,310: INFO: utils: NumExpr defaulting to 16 threads.]
+[2026-01-27 17:34:16,701: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-01-27 17:34:16,703: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 17:34:16,704: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 17:34:16,706: INFO: common: created directory at: artifacts]
+[2026-01-27 17:34:16,706: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-01-27 17:34:16,707: INFO: data_ingestion: Removed corrupted file : artifacts/data_ingestion/fraud_data.zip]
+[2026-01-27 17:34:16,707: INFO: data_ingestion: Downloading data from : 1xHzaCHq6gEXFmYN2Cc2Yb1jVxaAayb2y]
+[2026-01-27 17:34:18,716: INFO: data_ingestion: Downloaded successfully into artifacts/data_ingestion/fraud_data.zip]
+[2026-01-27 17:34:18,717: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-01-27 17:34:18,717: INFO: main: ***************]
+[2026-01-27 17:34:18,717: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-01-27 17:34:18,721: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 17:34:18,722: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 17:34:18,723: INFO: common: created directory at: artifacts]
+[2026-01-27 17:34:18,723: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-27 17:34:18,776: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-27 17:34:18,807: INFO: prepare_base_model: Model saved at: artifacts\prepare_base_model\base_model.h5]
+[2026-01-27 17:34:18,829: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-27 17:34:18,843: INFO: prepare_base_model: Model saved at: artifacts\prepare_base_model\base_model_updated.h5]
+[2026-01-27 17:34:18,843: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-01-27 17:34:18,843: INFO: main: *******************]
+[2026-01-27 17:34:18,844: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-01-27 17:34:18,845: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 17:34:18,846: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 17:34:18,846: INFO: common: created directory at: artifacts]
+[2026-01-27 17:34:18,848: INFO: common: created directory at: artifacts\training]
+[2026-01-27 17:34:18,892: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-01-27 17:34:21,133: INFO: main: >>>>>> stage Model Training completed <<<<<<
+
+x==========x]
+[2026-01-27 17:34:21,133: INFO: main: *******************]
+[2026-01-27 17:34:21,134: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-01-27 17:34:21,136: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 17:34:21,138: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 17:34:21,139: INFO: common: created directory at: artifacts]
+[2026-01-27 17:34:40,074: INFO: common: json file saved at: scores.json]
+[2026-01-27 17:34:40,075: INFO: common: json file saved at: scores.json]
+[2026-01-27 17:35:08,911: ERROR: main: API request to endpoint /api/2.0/mlflow/registered-models/create failed with error code 403 != 200. Response body: '']
+Traceback (most recent call last):
+  File "C:\Users\artit\IKP_2025\fraud_prediction\main.py", line 45, in <module>
+    model_evalution.main()
+  File "C:\Users\artit\IKP_2025\fraud_prediction\src\fraud_prediction\pipeline\stage_04_model_evaluation.py", line 20, in main
+    evaluation.log_into_mlflow()
+  File "C:\Users\artit\IKP_2025\fraud_prediction\src\fraud_prediction\components\model_evaluation_mlflow.py", line 112, in log_into_mlflow
+    mlflow.keras.log_model(
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\mlflow\keras\save.py", line 349, in log_model
+    return Model.log(
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\mlflow\models\model.py", line 1357, in log
+    registered_model = mlflow.tracking._model_registry.fluent._register_model(
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\mlflow\tracking\_model_registry\fluent.py", line 167, in _register_model
+    raise e
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\mlflow\tracking\_model_registry\fluent.py", line 156, in _register_model
+    create_model_response = client.create_registered_model(name)
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\mlflow\tracking\client.py", line 3842, in create_registered_model
+    return self._get_registry_client().create_registered_model(
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\mlflow\telemetry\track.py", line 30, in wrapper
+    result = func(*args, **kwargs)
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\mlflow\tracking\_model_registry\client.py", line 96, in create_registered_model
+    return self.store.create_registered_model(name, tags, description, deployment_job_id)
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\mlflow\store\model_registry\rest_store.py", line 110, in create_registered_model
+    response_proto = self._call_endpoint(CreateRegisteredModel, req_body)
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\mlflow\store\model_registry\base_rest_store.py", line 42, in _call_endpoint
+    return call_endpoint(
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\mlflow\utils\rest_utils.py", line 596, in call_endpoint
+    response = verify_rest_response(response, endpoint)
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\mlflow\utils\rest_utils.py", line 321, in verify_rest_response
+    raise MlflowException(
+mlflow.exceptions.MlflowException: API request to endpoint /api/2.0/mlflow/registered-models/create failed with error code 403 != 200. Response body: ''
+[2026-01-27 17:35:43,234: INFO: utils: Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.]
+[2026-01-27 17:35:43,234: INFO: utils: NumExpr defaulting to 16 threads.]
+[2026-01-27 17:35:45,590: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-01-27 17:35:45,592: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 17:35:45,593: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 17:35:45,594: INFO: common: created directory at: artifacts]
+[2026-01-27 17:35:45,594: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-01-27 17:35:45,594: INFO: data_ingestion: Removed corrupted file : artifacts/data_ingestion/fraud_data.zip]
+[2026-01-27 17:35:45,594: INFO: data_ingestion: Downloading data from : 1xHzaCHq6gEXFmYN2Cc2Yb1jVxaAayb2y]
+[2026-01-27 17:35:47,512: INFO: data_ingestion: Downloaded successfully into artifacts/data_ingestion/fraud_data.zip]
+[2026-01-27 17:35:47,512: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-01-27 17:35:47,512: INFO: main: ***************]
+[2026-01-27 17:35:47,513: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-01-27 17:35:47,515: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 17:35:47,516: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 17:35:47,518: INFO: common: created directory at: artifacts]
+[2026-01-27 17:35:47,519: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-27 17:35:47,570: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-27 17:35:47,600: INFO: prepare_base_model: Model saved at: artifacts\prepare_base_model\base_model.h5]
+[2026-01-27 17:35:47,624: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-27 17:35:47,637: INFO: prepare_base_model: Model saved at: artifacts\prepare_base_model\base_model_updated.h5]
+[2026-01-27 17:35:47,638: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-01-27 17:35:47,638: INFO: main: *******************]
+[2026-01-27 17:35:47,638: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-01-27 17:35:47,639: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 17:35:47,640: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 17:35:47,640: INFO: common: created directory at: artifacts]
+[2026-01-27 17:35:47,640: INFO: common: created directory at: artifacts\training]
+[2026-01-27 17:35:47,682: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-01-27 17:35:49,898: INFO: main: >>>>>> stage Model Training completed <<<<<<
+
+x==========x]
+[2026-01-27 17:35:49,898: INFO: main: *******************]
+[2026-01-27 17:35:49,898: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-01-27 17:35:49,900: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 17:35:49,902: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 17:35:49,902: INFO: common: created directory at: artifacts]
+[2026-01-27 17:36:09,295: INFO: common: json file saved at: scores.json]
+[2026-01-27 17:36:09,296: INFO: common: json file saved at: scores.json]
+[2026-01-27 17:36:46,515: ERROR: main: API request to endpoint /api/2.0/mlflow/registered-models/create failed with error code 403 != 200. Response body: '']
+Traceback (most recent call last):
+  File "C:\Users\artit\IKP_2025\fraud_prediction\main.py", line 45, in <module>
+    model_evalution.main()
+  File "C:\Users\artit\IKP_2025\fraud_prediction\src\fraud_prediction\pipeline\stage_04_model_evaluation.py", line 20, in main
+    evaluation.log_into_mlflow()
+  File "C:\Users\artit\IKP_2025\fraud_prediction\src\fraud_prediction\components\model_evaluation_mlflow.py", line 112, in log_into_mlflow
+    mlflow.keras.log_model(
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\mlflow\keras\save.py", line 349, in log_model
+    return Model.log(
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\mlflow\models\model.py", line 1357, in log
+    registered_model = mlflow.tracking._model_registry.fluent._register_model(
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\mlflow\tracking\_model_registry\fluent.py", line 167, in _register_model
+    raise e
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\mlflow\tracking\_model_registry\fluent.py", line 156, in _register_model
+    create_model_response = client.create_registered_model(name)
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\mlflow\tracking\client.py", line 3842, in create_registered_model
+    return self._get_registry_client().create_registered_model(
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\mlflow\telemetry\track.py", line 30, in wrapper
+    result = func(*args, **kwargs)
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\mlflow\tracking\_model_registry\client.py", line 96, in create_registered_model
+    return self.store.create_registered_model(name, tags, description, deployment_job_id)
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\mlflow\store\model_registry\rest_store.py", line 110, in create_registered_model
+    response_proto = self._call_endpoint(CreateRegisteredModel, req_body)
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\mlflow\store\model_registry\base_rest_store.py", line 42, in _call_endpoint
+    return call_endpoint(
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\mlflow\utils\rest_utils.py", line 596, in call_endpoint
+    response = verify_rest_response(response, endpoint)
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\mlflow\utils\rest_utils.py", line 321, in verify_rest_response
+    raise MlflowException(
+mlflow.exceptions.MlflowException: API request to endpoint /api/2.0/mlflow/registered-models/create failed with error code 403 != 200. Response body: ''
+[2026-01-27 17:39:00,295: INFO: utils: Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.]
+[2026-01-27 17:39:00,295: INFO: utils: NumExpr defaulting to 16 threads.]
+[2026-01-27 17:39:02,610: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-01-27 17:39:02,613: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 17:39:02,614: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 17:39:02,614: INFO: common: created directory at: artifacts]
+[2026-01-27 17:39:02,614: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-01-27 17:39:02,616: INFO: data_ingestion: Removed corrupted file : artifacts/data_ingestion/fraud_data.zip]
+[2026-01-27 17:39:02,616: INFO: data_ingestion: Downloading data from : 1xHzaCHq6gEXFmYN2Cc2Yb1jVxaAayb2y]
+[2026-01-27 17:39:04,581: INFO: data_ingestion: Downloaded successfully into artifacts/data_ingestion/fraud_data.zip]
+[2026-01-27 17:39:04,581: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-01-27 17:39:04,581: INFO: main: ***************]
+[2026-01-27 17:39:04,581: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-01-27 17:39:04,583: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 17:39:04,584: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 17:39:04,584: INFO: common: created directory at: artifacts]
+[2026-01-27 17:39:04,586: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-27 17:39:04,634: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-27 17:39:04,671: INFO: prepare_base_model: Model saved at: artifacts\prepare_base_model\base_model.h5]
+[2026-01-27 17:39:04,692: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-27 17:39:04,704: INFO: prepare_base_model: Model saved at: artifacts\prepare_base_model\base_model_updated.h5]
+[2026-01-27 17:39:04,704: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-01-27 17:39:04,704: INFO: main: *******************]
+[2026-01-27 17:39:04,704: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-01-27 17:39:04,707: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 17:39:04,708: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 17:39:04,708: INFO: common: created directory at: artifacts]
+[2026-01-27 17:39:04,709: INFO: common: created directory at: artifacts\training]
+[2026-01-27 17:39:04,751: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-01-27 17:39:06,954: INFO: main: >>>>>> stage Model Training completed <<<<<<
+
+x==========x]
+[2026-01-27 17:39:06,954: INFO: main: *******************]
+[2026-01-27 17:39:06,954: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-01-27 17:39:06,956: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 17:39:06,957: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 17:39:06,957: INFO: common: created directory at: artifacts]
+[2026-01-27 17:39:26,078: INFO: common: json file saved at: scores.json]
+[2026-01-27 17:39:26,079: INFO: common: json file saved at: scores.json]
+[2026-01-27 17:39:53,578: INFO: main: >>>>>> stage Evaluation stage completed <<<<<<
+
+x==========x]
+[2026-01-27 17:54:02,562: INFO: utils: Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.]
+[2026-01-27 17:54:02,562: INFO: utils: NumExpr defaulting to 16 threads.]
+[2026-01-27 17:54:05,132: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-01-27 17:54:05,134: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 17:54:05,136: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 17:54:05,136: INFO: common: created directory at: artifacts]
+[2026-01-27 17:54:05,136: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-01-27 17:54:05,138: INFO: data_ingestion: Removed corrupted file : artifacts/data_ingestion/fraud_data.zip]
+[2026-01-27 17:54:05,138: INFO: data_ingestion: Downloading data from : 1xHzaCHq6gEXFmYN2Cc2Yb1jVxaAayb2y]
+[2026-01-27 17:54:06,956: INFO: data_ingestion: Downloaded successfully into artifacts/data_ingestion/fraud_data.zip]
+[2026-01-27 17:54:06,956: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-01-27 17:54:06,957: INFO: main: ***************]
+[2026-01-27 17:54:06,957: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-01-27 17:54:06,958: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 17:54:06,960: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 17:54:06,960: INFO: common: created directory at: artifacts]
+[2026-01-27 17:54:06,961: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-27 17:54:07,013: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-27 17:54:07,050: INFO: prepare_base_model: Model saved at: artifacts\prepare_base_model\base_model.h5]
+[2026-01-27 17:54:07,070: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-27 17:54:07,082: INFO: prepare_base_model: Model saved at: artifacts\prepare_base_model\base_model_updated.h5]
+[2026-01-27 17:54:07,084: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-01-27 17:54:07,084: INFO: main: *******************]
+[2026-01-27 17:54:07,084: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-01-27 17:54:07,086: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 17:54:07,087: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 17:54:07,088: INFO: common: created directory at: artifacts]
+[2026-01-27 17:54:07,088: INFO: common: created directory at: artifacts\training]
+[2026-01-27 17:54:07,130: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-01-27 17:54:09,379: INFO: main: >>>>>> stage Model Training completed <<<<<<
+
+x==========x]
+[2026-01-27 17:54:09,379: INFO: main: *******************]
+[2026-01-27 17:54:09,379: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-01-27 17:54:09,380: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 17:54:09,383: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 17:54:09,383: INFO: common: created directory at: artifacts]
+[2026-01-27 17:54:29,167: INFO: common: json file saved at: scores.json]
+[2026-01-27 17:54:29,170: INFO: common: json file saved at: scores.json]
+[2026-01-27 17:54:30,484: ERROR: main: API request to endpoint /api/2.0/mlflow/runs/create failed with error code 403 != 200. Response body: '']
+Traceback (most recent call last):
+  File "C:\Users\artit\IKP_2025\fraud_prediction\main.py", line 45, in <module>
+    model_evalution.main()
+  File "C:\Users\artit\IKP_2025\fraud_prediction\src\fraud_prediction\pipeline\stage_04_model_evaluation.py", line 20, in main
+    evaluation.log_into_mlflow()
+  File "C:\Users\artit\IKP_2025\fraud_prediction\src\fraud_prediction\components\model_evaluation_mlflow.py", line 97, in log_into_mlflow
+    with mlflow.start_run(run_name=auto_run_name):
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\mlflow\tracking\fluent.py", line 539, in start_run
+    active_run_obj = client.create_run(
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\mlflow\tracking\client.py", line 494, in create_run
+    return self._tracking_client.create_run(experiment_id, start_time, tags, run_name)
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\mlflow\telemetry\track.py", line 30, in wrapper
+    result = func(*args, **kwargs)
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\mlflow\tracking\_tracking_service\client.py", line 183, in create_run
+    return self.store.create_run(
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\mlflow\store\tracking\rest_store.py", line 359, in create_run
+    response_proto = self._call_endpoint(CreateRun, req_body)
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\mlflow\store\tracking\rest_store.py", line 222, in _call_endpoint
+    return call_endpoint(
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\mlflow\utils\rest_utils.py", line 596, in call_endpoint
+    response = verify_rest_response(response, endpoint)
+  File "C:\Users\artit\miniconda3\envs\fraud_final\lib\site-packages\mlflow\utils\rest_utils.py", line 321, in verify_rest_response
+    raise MlflowException(
+mlflow.exceptions.MlflowException: API request to endpoint /api/2.0/mlflow/runs/create failed with error code 403 != 200. Response body: ''
+[2026-01-27 17:56:15,597: INFO: utils: Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.]
+[2026-01-27 17:56:15,598: INFO: utils: NumExpr defaulting to 16 threads.]
+[2026-01-27 17:56:17,898: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-01-27 17:56:17,900: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 17:56:17,901: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 17:56:17,901: INFO: common: created directory at: artifacts]
+[2026-01-27 17:56:17,901: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-01-27 17:56:17,902: INFO: data_ingestion: Removed corrupted file : artifacts/data_ingestion/fraud_data.zip]
+[2026-01-27 17:56:17,902: INFO: data_ingestion: Downloading data from : 1xHzaCHq6gEXFmYN2Cc2Yb1jVxaAayb2y]
+[2026-01-27 17:56:19,899: INFO: data_ingestion: Downloaded successfully into artifacts/data_ingestion/fraud_data.zip]
+[2026-01-27 17:56:19,899: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-01-27 17:56:19,899: INFO: main: ***************]
+[2026-01-27 17:56:19,900: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-01-27 17:56:19,902: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 17:56:19,903: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 17:56:19,903: INFO: common: created directory at: artifacts]
+[2026-01-27 17:56:19,904: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-27 17:56:19,958: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-27 17:56:19,995: INFO: prepare_base_model: Model saved at: artifacts\prepare_base_model\base_model.h5]
+[2026-01-27 17:56:20,019: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-27 17:56:20,031: INFO: prepare_base_model: Model saved at: artifacts\prepare_base_model\base_model_updated.h5]
+[2026-01-27 17:56:20,032: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-01-27 17:56:20,032: INFO: main: *******************]
+[2026-01-27 17:56:20,032: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-01-27 17:56:20,033: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 17:56:20,034: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 17:56:20,035: INFO: common: created directory at: artifacts]
+[2026-01-27 17:56:20,035: INFO: common: created directory at: artifacts\training]
+[2026-01-27 17:56:20,083: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-01-27 17:56:22,383: INFO: main: >>>>>> stage Model Training completed <<<<<<
+
+x==========x]
+[2026-01-27 17:56:22,383: INFO: main: *******************]
+[2026-01-27 17:56:22,383: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-01-27 17:56:22,385: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-27 17:56:22,387: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-27 17:56:22,387: INFO: common: created directory at: artifacts]
+[2026-01-27 17:56:41,918: INFO: common: json file saved at: scores.json]
+[2026-01-27 17:56:41,919: INFO: common: json file saved at: scores.json]
+[2026-01-27 17:57:16,797: INFO: main: >>>>>> stage Evaluation stage completed <<<<<<
+
+x==========x]
+[2026-01-28 10:00:15,979: INFO: utils: Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.]
+[2026-01-28 10:00:15,979: INFO: utils: NumExpr defaulting to 16 threads.]
+[2026-01-28 10:00:18,919: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-01-28 10:00:18,930: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-28 10:00:18,946: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-28 10:00:18,946: INFO: common: created directory at: artifacts]
+[2026-01-28 10:00:18,946: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-01-28 10:00:18,948: INFO: data_ingestion: Removed corrupted file : artifacts/data_ingestion/fraud_data.zip]
+[2026-01-28 10:00:18,948: INFO: data_ingestion: Downloading data from : 1xHzaCHq6gEXFmYN2Cc2Yb1jVxaAayb2y]
+[2026-01-28 10:00:21,020: INFO: data_ingestion: Downloaded successfully into artifacts/data_ingestion/fraud_data.zip]
+[2026-01-28 10:00:21,020: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-01-28 10:00:21,020: INFO: main: ***************]
+[2026-01-28 10:00:21,020: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-01-28 10:00:21,020: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-28 10:00:21,020: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-28 10:00:21,020: INFO: common: created directory at: artifacts]
+[2026-01-28 10:00:21,025: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-28 10:00:21,078: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-28 10:00:21,104: INFO: prepare_base_model: Model saved at: artifacts\prepare_base_model\base_model.h5]
+[2026-01-28 10:00:21,126: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-28 10:00:21,147: INFO: prepare_base_model: Model saved at: artifacts\prepare_base_model\base_model_updated.h5]
+[2026-01-28 10:00:21,148: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-01-28 10:00:21,148: INFO: main: *******************]
+[2026-01-28 10:00:21,148: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-01-28 10:00:21,150: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-28 10:00:21,152: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-28 10:00:21,152: INFO: common: created directory at: artifacts]
+[2026-01-28 10:00:21,153: INFO: common: created directory at: artifacts\training]
+[2026-01-28 10:00:21,198: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-01-28 10:00:23,952: INFO: main: >>>>>> stage Model Training completed <<<<<<
+
+x==========x]
+[2026-01-28 10:00:23,952: INFO: main: *******************]
+[2026-01-28 10:00:23,952: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-01-28 10:00:23,952: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-28 10:00:23,952: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-28 10:00:23,952: INFO: common: created directory at: artifacts]
+[2026-01-28 10:00:43,618: INFO: common: json file saved at: scores.json]
+[2026-01-28 10:00:43,619: INFO: common: json file saved at: scores.json]
+[2026-01-28 10:01:22,297: INFO: main: >>>>>> stage Evaluation stage completed <<<<<<
+
+x==========x]
+[2026-01-28 10:03:52,028: INFO: utils: Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.]
+[2026-01-28 10:03:52,028: INFO: utils: NumExpr defaulting to 16 threads.]
+[2026-01-28 10:03:54,380: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-01-28 10:03:54,384: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-28 10:03:54,401: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-28 10:03:54,402: INFO: common: created directory at: artifacts]
+[2026-01-28 10:03:54,402: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-01-28 10:03:54,403: INFO: data_ingestion: Removed corrupted file : artifacts/data_ingestion/fraud_data.zip]
+[2026-01-28 10:03:54,403: INFO: data_ingestion: Downloading data from : 1xHzaCHq6gEXFmYN2Cc2Yb1jVxaAayb2y]
+[2026-01-28 10:03:56,562: INFO: data_ingestion: Downloaded successfully into artifacts/data_ingestion/fraud_data.zip]
+[2026-01-28 10:03:56,562: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-01-28 10:03:56,562: INFO: main: ***************]
+[2026-01-28 10:03:56,562: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-01-28 10:03:56,562: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-28 10:03:56,562: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-28 10:03:56,568: INFO: common: created directory at: artifacts]
+[2026-01-28 10:03:56,568: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-28 10:03:56,626: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-28 10:03:56,655: INFO: prepare_base_model: Model saved at: artifacts\prepare_base_model\base_model.h5]
+[2026-01-28 10:03:56,684: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-28 10:03:56,701: INFO: prepare_base_model: Model saved at: artifacts\prepare_base_model\base_model_updated.h5]
+[2026-01-28 10:03:56,701: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-01-28 10:03:56,701: INFO: main: *******************]
+[2026-01-28 10:03:56,701: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-01-28 10:03:56,703: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-28 10:03:56,705: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-28 10:03:56,705: INFO: common: created directory at: artifacts]
+[2026-01-28 10:03:56,706: INFO: common: created directory at: artifacts\training]
+[2026-01-28 10:03:56,760: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-01-28 10:03:59,711: INFO: main: >>>>>> stage Model Training completed <<<<<<
+
+x==========x]
+[2026-01-28 10:03:59,712: INFO: main: *******************]
+[2026-01-28 10:03:59,712: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-01-28 10:03:59,713: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-28 10:03:59,714: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-28 10:03:59,714: INFO: common: created directory at: artifacts]
+[2026-01-28 10:04:19,856: INFO: common: json file saved at: scores.json]
+[2026-01-28 10:04:19,857: INFO: common: json file saved at: scores.json]
+[2026-01-28 10:05:03,677: INFO: main: >>>>>> stage Evaluation stage completed <<<<<<
+
+x==========x]
+[2026-01-28 10:07:35,318: INFO: utils: Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.]
+[2026-01-28 10:07:35,318: INFO: utils: NumExpr defaulting to 16 threads.]
+[2026-01-28 10:07:37,696: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-01-28 10:07:37,698: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-28 10:07:37,700: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-28 10:07:37,701: INFO: common: created directory at: artifacts]
+[2026-01-28 10:07:37,701: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-01-28 10:07:37,702: INFO: data_ingestion: Removed corrupted file : artifacts/data_ingestion/fraud_data.zip]
+[2026-01-28 10:07:37,702: INFO: data_ingestion: Downloading data from : 1xHzaCHq6gEXFmYN2Cc2Yb1jVxaAayb2y]
+[2026-01-28 10:07:39,953: INFO: data_ingestion: Downloaded successfully into artifacts/data_ingestion/fraud_data.zip]
+[2026-01-28 10:07:39,954: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-01-28 10:07:39,954: INFO: main: ***************]
+[2026-01-28 10:07:39,954: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-01-28 10:07:39,955: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-28 10:07:39,956: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-28 10:07:39,956: INFO: common: created directory at: artifacts]
+[2026-01-28 10:07:39,957: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-28 10:07:40,013: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-28 10:07:40,048: INFO: prepare_base_model: Model saved at: artifacts\prepare_base_model\base_model.h5]
+[2026-01-28 10:07:40,070: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-28 10:07:40,081: INFO: prepare_base_model: Model saved at: artifacts\prepare_base_model\base_model_updated.h5]
+[2026-01-28 10:07:40,081: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-01-28 10:07:40,082: INFO: main: *******************]
+[2026-01-28 10:07:40,082: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-01-28 10:07:40,086: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-28 10:07:40,087: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-28 10:07:40,088: INFO: common: created directory at: artifacts]
+[2026-01-28 10:07:40,089: INFO: common: created directory at: artifacts\training]
+[2026-01-28 10:07:40,133: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-01-28 10:07:43,344: INFO: main: >>>>>> stage Model Training completed <<<<<<
+
+x==========x]
+[2026-01-28 10:07:43,346: INFO: main: *******************]
+[2026-01-28 10:07:43,346: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-01-28 10:07:43,348: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-28 10:07:43,349: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-28 10:07:43,349: INFO: common: created directory at: artifacts]
+[2026-01-28 10:08:03,119: INFO: common: json file saved at: scores.json]
+[2026-01-28 10:08:03,120: INFO: common: json file saved at: scores.json]
+[2026-01-28 10:08:39,892: INFO: main: >>>>>> stage Evaluation stage completed <<<<<<
+
+x==========x]
+[2026-01-28 10:20:30,603: INFO: utils: Note: NumExpr detected 22 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 16.]
+[2026-01-28 10:20:30,604: INFO: utils: NumExpr defaulting to 16 threads.]
+[2026-01-28 10:20:32,908: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-01-28 10:20:32,911: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-28 10:20:32,927: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-28 10:20:32,929: INFO: common: created directory at: artifacts]
+[2026-01-28 10:20:32,929: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-01-28 10:20:32,930: INFO: data_ingestion: Removed corrupted file : artifacts/data_ingestion/fraud_data.zip]
+[2026-01-28 10:20:32,930: INFO: data_ingestion: Downloading data from : 1xHzaCHq6gEXFmYN2Cc2Yb1jVxaAayb2y]
+[2026-01-28 10:20:35,001: INFO: data_ingestion: Downloaded successfully into artifacts/data_ingestion/fraud_data.zip]
+[2026-01-28 10:20:35,001: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-01-28 10:20:35,001: INFO: main: ***************]
+[2026-01-28 10:20:35,002: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-01-28 10:20:35,003: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-28 10:20:35,004: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-28 10:20:35,004: INFO: common: created directory at: artifacts]
+[2026-01-28 10:20:35,005: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-28 10:20:35,063: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-28 10:20:35,095: INFO: prepare_base_model: Model saved at: artifacts\prepare_base_model\base_model.h5]
+[2026-01-28 10:20:35,116: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-01-28 10:20:35,131: INFO: prepare_base_model: Model saved at: artifacts\prepare_base_model\base_model_updated.h5]
+[2026-01-28 10:20:35,131: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-01-28 10:20:35,132: INFO: main: *******************]
+[2026-01-28 10:20:35,132: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-01-28 10:20:35,134: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-28 10:20:35,135: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-28 10:20:35,135: INFO: common: created directory at: artifacts]
+[2026-01-28 10:20:35,135: INFO: common: created directory at: artifacts\training]
+[2026-01-28 10:20:35,179: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-01-28 10:20:37,295: INFO: main: >>>>>> stage Model Training completed <<<<<<
+
+x==========x]
+[2026-01-28 10:20:37,295: INFO: main: *******************]
+[2026-01-28 10:20:37,297: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-01-28 10:20:37,299: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2026-01-28 10:20:37,301: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-28 10:20:37,301: INFO: common: created directory at: artifacts]
+[2026-01-28 10:20:57,176: INFO: common: json file saved at: scores.json]
+[2026-01-28 10:20:57,177: INFO: common: json file saved at: scores.json]
+[2026-01-28 10:21:33,764: INFO: main: >>>>>> stage Evaluation stage completed <<<<<<
+
+x==========x]

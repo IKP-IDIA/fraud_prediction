@@ -27,3 +27,7 @@ Thumbs.db
 
 # 6. Environment Variables (ป้องกันข้อมูลความลับ)
 .env
+
+mlflow.db
+*.log
+scores.json

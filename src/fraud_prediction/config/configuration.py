@@ -47,7 +47,6 @@ class ConfigurationManager:
             params_num_features=self.params.NUM_FEATURES,
             params_learning_rate=self.params.LEARNING_RATE,
             params_include_top=self.params.INCLUDE_TOP,
-            params_weights=self.params.WEIGHTS,
             params_classes=self.params.CLASSES
         )
 

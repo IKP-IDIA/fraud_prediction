@@ -11,7 +11,7 @@ class PrepareBaseModel:
         self.config = config
 
     def get_base_model(self):
-        input_dim = self.config.params_num_features[0]
+        input_dim = self.config.params_num_features
         self.model = tf.keras.models.Sequential([
             tf.keras.layers.Input(shape=(input_dim,)),
             tf.keras.layers.Dense(64, activation='relu'),
