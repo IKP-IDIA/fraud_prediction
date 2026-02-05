@@ -1,0 +1,23 @@
+apiVersion: "serving.kserve.io/v1beta1"
+kind: "InferenceService"
+metadata:
+  name: "fraud-detection"
+  namespace: "default"
+  annotations:
+    serving.kserve.io/s3-endpoint: "dagshub.com"
+    serving.kserve.io/s3-usehttps: "1"
+    # บังคับให้ใช้ Path Style (สำคัญมากสำหรับ DagsHub)
+    serving.kserve.io/s3-forcepathstyle: "1" 
+spec:
+  predictor:
+    serviceAccountName: sa-dagshub
+    model:
+      modelFormat:
+        name: mlflow
+      runtime: kserve-mlserver
+      # ตรวจสอบชื่อ Bucket: ใน DagsHub ชื่อ Bucket คือ "ชื่อโปรเจกต์"
+      storageUri: "s3://fraud_prediction/artifacts/4/cf85f20514234743b94e2116b529acc4/artifacts/model"
+      resources:
+        limits:
+          cpu: "1"
+          memory: "2Gi"

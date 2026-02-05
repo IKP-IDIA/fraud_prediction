@@ -1,0 +1,17 @@
+apiVersion: "serving.kserve.io/v1beta1"
+kind: "InferenceService"
+metadata:
+  name: "fraud-detection"
+  namespace: "default"
+spec:
+  predictor:
+    model:
+      modelFormat:
+        name: mlflow
+      # Pull model directly from Registry of DagsHub
+      #  ?????????????? S3 Credentials ?? K8s ??????????????????????
+      storageUri: "s3://dagshub-storage/ArtitayaN/fraud_prediction/artifacts/4/cf85f20514234743b94e2116b529acc4/artifacts/model"
+      resources:
+        limits:
+          cpu: "1"
+          memory: "2Gi"

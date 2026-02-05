@@ -1487,3 +1487,1212 @@ x==========x]
 [2026-01-28 10:21:33,764: INFO: main: >>>>>> stage Evaluation stage completed <<<<<<
 
 x==========x]
+[2026-02-04 02:20:54,536: INFO: _client: HTTP Request: POST https://dagshub.com/login/oauth/middleman "HTTP/1.1 504 Gateway Time-out"]
+[2026-02-04 02:25:42,416: INFO: _client: HTTP Request: POST https://dagshub.com/login/oauth/middleman "HTTP/1.1 504 Gateway Time-out"]
+[2026-02-04 02:28:56,751: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 02:28:56,752: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 02:28:56,753: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 02:28:56,753: INFO: common: created directory at: artifacts]
+[2026-02-04 02:28:56,753: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 02:28:56,753: INFO: data_ingestion: Downloading data from : 1xHzaCHq6gEXFmYN2Cc2Yb1jVxaAayb2y]
+[2026-02-04 02:28:58,810: INFO: data_ingestion: Downloaded successfully into artifacts/data_ingestion/fraud_data.zip]
+[2026-02-04 02:28:58,811: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-02-04 02:28:58,811: INFO: main: ***************]
+[2026-02-04 02:28:58,811: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-02-04 02:28:58,811: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 02:28:58,812: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 02:28:58,812: INFO: common: created directory at: artifacts]
+[2026-02-04 02:28:58,812: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-02-04 02:28:59,474: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 02:28:59,479: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model.h5]
+[2026-02-04 02:28:59,487: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 02:28:59,492: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model_updated.h5]
+[2026-02-04 02:28:59,492: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-02-04 02:28:59,492: INFO: main: *******************]
+[2026-02-04 02:28:59,492: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-02-04 02:28:59,493: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 02:28:59,493: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 02:28:59,493: INFO: common: created directory at: artifacts]
+[2026-02-04 02:28:59,493: INFO: common: created directory at: artifacts/training]
+[2026-02-04 02:28:59,506: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-02-04 02:28:59,509: ERROR: main: ไม่พบไฟล์ CSV ใน artifacts/data_ingestion]
+Traceback (most recent call last):
+  File "/home/ikp-4090/june/main.py", line 48, in <module>
+    model_trainer .main()
+  File "/home/ikp-4090/june/src/fraud_prediction/pipeline/stage_03_model_trainer.py", line 17, in main
+    training.prepare_data()
+  File "/home/ikp-4090/june/src/fraud_prediction/components/model_trainer.py", line 38, in prepare_data
+    raise FileNotFoundError(f"ไม่พบไฟล์ CSV ใน {data_dir}")
+FileNotFoundError: ไม่พบไฟล์ CSV ใน artifacts/data_ingestion
+[2026-02-04 02:32:10,423: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 02:32:10,423: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 02:32:10,424: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 02:32:10,424: INFO: common: created directory at: artifacts]
+[2026-02-04 02:32:10,424: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 02:32:10,424: INFO: data_ingestion: Removed corrupted file : artifacts/data_ingestion/fraud_data.zip]
+[2026-02-04 02:32:10,424: INFO: data_ingestion: Downloading data from : 1xHzaCHq6gEXFmYN2Cc2Yb1jVxaAayb2y]
+[2026-02-04 02:32:12,396: INFO: data_ingestion: Downloaded successfully into artifacts/data_ingestion/fraud_data.zip]
+[2026-02-04 02:32:12,396: ERROR: main: File is not a zip file]
+Traceback (most recent call last):
+  File "/home/ikp-4090/june/main.py", line 26, in <module>
+    obj.main()
+  File "/home/ikp-4090/june/src/fraud_prediction/pipeline/stage_01_data_ingestion.py", line 16, in main
+    data_ingestion.extract_zip_file()
+  File "/home/ikp-4090/june/src/fraud_prediction/components/data_ingestion.py", line 44, in extract_zip_file
+    with zipfile.ZipFile(self.config.local_data_file, 'r') as zip_ref:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/zipfile.py", line 1329, in __init__
+    self._RealGetContents()
+  File "/usr/lib/python3.11/zipfile.py", line 1396, in _RealGetContents
+    raise BadZipFile("File is not a zip file")
+zipfile.BadZipFile: File is not a zip file
+[2026-02-04 02:35:30,509: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 02:35:30,510: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 02:35:30,510: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 02:35:30,510: INFO: common: created directory at: artifacts]
+[2026-02-04 02:35:30,510: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 02:35:30,510: INFO: data_ingestion: Removed corrupted file : artifacts/data_ingestion/fraud_data.zip]
+[2026-02-04 02:35:30,510: INFO: data_ingestion: Downloading data from : 1xHzaCHq6gEXFmYN2Cc2Yb1jVxaAayb2y]
+[2026-02-04 02:35:30,510: ERROR: main: name 'url' is not defined]
+Traceback (most recent call last):
+  File "/home/ikp-4090/june/main.py", line 26, in <module>
+    obj.main()
+  File "/home/ikp-4090/june/src/fraud_prediction/pipeline/stage_01_data_ingestion.py", line 15, in main
+    data_ingestion.download_file()
+  File "/home/ikp-4090/june/src/fraud_prediction/components/data_ingestion.py", line 33, in download_file
+    raise e
+  File "/home/ikp-4090/june/src/fraud_prediction/components/data_ingestion.py", line 28, in download_file
+    gdown.download(url, output=str(zip_download_dir), quiet=False, fuzzy=True)
+                   ^^^
+NameError: name 'url' is not defined
+[2026-02-04 02:36:23,436: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 02:36:23,436: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 02:36:23,437: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 02:36:23,437: INFO: common: created directory at: artifacts]
+[2026-02-04 02:36:23,437: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 02:36:23,437: INFO: data_ingestion: Downloading data from : 1xHzaCHq6gEXFmYN2Cc2Yb1jVxaAayb2y]
+[2026-02-04 02:36:25,241: INFO: data_ingestion: Downloaded successfully into artifacts/data_ingestion/fraud_data.zip]
+[2026-02-04 02:36:25,241: ERROR: main: File is not a zip file]
+Traceback (most recent call last):
+  File "/home/ikp-4090/june/main.py", line 26, in <module>
+    obj.main()
+  File "/home/ikp-4090/june/src/fraud_prediction/pipeline/stage_01_data_ingestion.py", line 16, in main
+    data_ingestion.extract_zip_file()
+  File "/home/ikp-4090/june/src/fraud_prediction/components/data_ingestion.py", line 45, in extract_zip_file
+    with zipfile.ZipFile(self.config.local_data_file, 'r') as zip_ref:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/zipfile.py", line 1329, in __init__
+    self._RealGetContents()
+  File "/usr/lib/python3.11/zipfile.py", line 1396, in _RealGetContents
+    raise BadZipFile("File is not a zip file")
+zipfile.BadZipFile: File is not a zip file
+[2026-02-04 02:40:35,508: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 02:40:35,509: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 02:40:35,509: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 02:40:35,509: INFO: common: created directory at: artifacts]
+[2026-02-04 02:40:35,509: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 02:40:35,509: ERROR: main: [Errno 2] No such file or directory: 'artifacts/data_ingestion/fraud_data.zip']
+Traceback (most recent call last):
+  File "/home/ikp-4090/june/main.py", line 26, in <module>
+    obj.main()
+  File "/home/ikp-4090/june/src/fraud_prediction/pipeline/stage_01_data_ingestion.py", line 16, in main
+    data_ingestion.extract_zip_file()
+  File "/home/ikp-4090/june/src/fraud_prediction/components/data_ingestion.py", line 45, in extract_zip_file
+    with zipfile.ZipFile(self.config.local_data_file, 'r') as zip_ref:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/zipfile.py", line 1311, in __init__
+    self.fp = io.open(file, filemode)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'artifacts/data_ingestion/fraud_data.zip'
+[2026-02-04 02:41:23,695: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 02:41:23,696: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 02:41:23,696: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 02:41:23,696: INFO: common: created directory at: artifacts]
+[2026-02-04 02:41:23,696: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 02:41:23,696: INFO: data_ingestion: Downloading data from : 1xHzaCHq6gEXFmYN2Cc2Yb1jVxaAayb2y]
+[2026-02-04 02:41:25,727: INFO: data_ingestion: Downloaded successfully into artifacts/data_ingestion/fraud_data.zip]
+[2026-02-04 02:41:25,728: ERROR: main: File is not a zip file]
+Traceback (most recent call last):
+  File "/home/ikp-4090/june/main.py", line 26, in <module>
+    obj.main()
+  File "/home/ikp-4090/june/src/fraud_prediction/pipeline/stage_01_data_ingestion.py", line 16, in main
+    data_ingestion.extract_zip_file()
+  File "/home/ikp-4090/june/src/fraud_prediction/components/data_ingestion.py", line 45, in extract_zip_file
+    with zipfile.ZipFile(self.config.local_data_file, 'r') as zip_ref:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/zipfile.py", line 1329, in __init__
+    self._RealGetContents()
+  File "/usr/lib/python3.11/zipfile.py", line 1396, in _RealGetContents
+    raise BadZipFile("File is not a zip file")
+zipfile.BadZipFile: File is not a zip file
+[2026-02-04 15:20:47,081: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 15:20:47,082: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 15:20:47,083: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 15:20:47,083: INFO: common: created directory at: artifacts]
+[2026-02-04 15:20:47,083: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 15:20:47,083: INFO: data_ingestion: Removed corrupted file : artifacts/data_ingestion/fraud_data.zip]
+[2026-02-04 15:20:47,083: INFO: data_ingestion: Downloading data from : 1xHzaCHq6gEXFmYN2Cc2Yb1jVxaAayb2y]
+[2026-02-04 15:20:49,559: INFO: data_ingestion: Downloaded successfully into artifacts/data_ingestion/fraud_data.zip]
+[2026-02-04 15:20:49,559: ERROR: main: File is not a zip file]
+Traceback (most recent call last):
+  File "/home/ikp-4090/june/main.py", line 26, in <module>
+    obj.main()
+  File "/home/ikp-4090/june/src/fraud_prediction/pipeline/stage_01_data_ingestion.py", line 16, in main
+    data_ingestion.extract_zip_file()
+  File "/home/ikp-4090/june/src/fraud_prediction/components/data_ingestion.py", line 45, in extract_zip_file
+    with zipfile.ZipFile(self.config.local_data_file, 'r') as zip_ref:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/zipfile.py", line 1329, in __init__
+    self._RealGetContents()
+  File "/usr/lib/python3.11/zipfile.py", line 1396, in _RealGetContents
+    raise BadZipFile("File is not a zip file")
+zipfile.BadZipFile: File is not a zip file
+[2026-02-04 15:41:09,970: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 15:41:09,971: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 15:41:09,971: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 15:41:09,971: INFO: common: created directory at: artifacts]
+[2026-02-04 15:41:09,971: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 15:41:10,119: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-02-04 15:41:10,119: INFO: main: ***************]
+[2026-02-04 15:41:10,119: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-02-04 15:41:10,119: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 15:41:10,120: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 15:41:10,120: INFO: common: created directory at: artifacts]
+[2026-02-04 15:41:10,120: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-02-04 15:41:10,701: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 15:41:10,706: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model.h5]
+[2026-02-04 15:41:10,714: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 15:41:10,719: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model_updated.h5]
+[2026-02-04 15:41:10,719: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-02-04 15:41:10,719: INFO: main: *******************]
+[2026-02-04 15:41:10,719: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-02-04 15:41:10,720: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 15:41:10,720: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 15:41:10,720: INFO: common: created directory at: artifacts]
+[2026-02-04 15:41:10,720: INFO: common: created directory at: artifacts/training]
+[2026-02-04 15:41:10,733: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-02-04 15:41:11,214: ERROR: main: name 'mlflow' is not defined]
+Traceback (most recent call last):
+  File "/home/ikp-4090/june/main.py", line 48, in <module>
+    model_trainer .main()
+  File "/home/ikp-4090/june/src/fraud_prediction/pipeline/stage_03_model_trainer.py", line 18, in main
+    training.train()
+  File "/home/ikp-4090/june/src/fraud_prediction/components/model_trainer.py", line 99, in train
+    mlflow.keras.autolog()
+    ^^^^^^
+NameError: name 'mlflow' is not defined
+[2026-02-04 15:58:53,295: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 15:58:53,296: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 15:58:53,297: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 15:58:53,297: INFO: common: created directory at: artifacts]
+[2026-02-04 15:58:53,297: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 15:58:53,457: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-02-04 15:58:53,457: INFO: main: ***************]
+[2026-02-04 15:58:53,457: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-02-04 15:58:53,458: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 15:58:53,458: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 15:58:53,458: INFO: common: created directory at: artifacts]
+[2026-02-04 15:58:53,458: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-02-04 15:58:54,049: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 15:58:54,054: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model.h5]
+[2026-02-04 15:58:54,063: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 15:58:54,068: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model_updated.h5]
+[2026-02-04 15:58:54,068: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-02-04 15:58:54,068: INFO: main: *******************]
+[2026-02-04 15:58:54,068: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-02-04 15:58:54,068: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 15:58:54,069: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 15:58:54,069: INFO: common: created directory at: artifacts]
+[2026-02-04 15:58:54,069: INFO: common: created directory at: artifacts/training]
+[2026-02-04 15:58:54,082: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-02-04 15:58:56,137: ERROR: main: 'TrainingConfig' object has no attribute 'sampling_ratio']
+Traceback (most recent call last):
+  File "/home/ikp-4090/june/main.py", line 48, in <module>
+    model_trainer .main()
+  File "/home/ikp-4090/june/src/fraud_prediction/pipeline/stage_03_model_trainer.py", line 18, in main
+    training.train()
+  File "/home/ikp-4090/june/src/fraud_prediction/components/model_trainer.py", line 109, in train
+    mlflow.log_param("sampling_ratio", self.config.sampling_ratio)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'TrainingConfig' object has no attribute 'sampling_ratio'
+[2026-02-04 16:04:19,191: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 16:04:19,198: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 16:04:19,202: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 16:04:19,203: INFO: common: created directory at: artifacts]
+[2026-02-04 16:04:19,203: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 16:04:19,394: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-02-04 16:04:19,394: INFO: main: ***************]
+[2026-02-04 16:04:19,394: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-02-04 16:04:19,395: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 16:04:19,395: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 16:04:19,395: INFO: common: created directory at: artifacts]
+[2026-02-04 16:04:19,395: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-02-04 16:04:19,442: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 16:04:19,448: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model.h5]
+[2026-02-04 16:04:19,459: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 16:04:19,466: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model_updated.h5]
+[2026-02-04 16:04:19,466: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-02-04 16:04:19,466: INFO: main: *******************]
+[2026-02-04 16:04:19,466: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-02-04 16:04:19,467: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 16:04:19,467: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 16:04:19,467: INFO: common: created directory at: artifacts]
+[2026-02-04 16:04:19,467: INFO: common: created directory at: artifacts/training]
+[2026-02-04 16:04:19,485: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-02-04 16:04:50,774: INFO: main: >>>>>> stage Model Training completed <<<<<<
+
+x==========x]
+[2026-02-04 16:04:50,774: INFO: main: *******************]
+[2026-02-04 16:04:50,774: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-02-04 16:04:50,775: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 16:04:50,775: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 16:04:50,776: INFO: common: created directory at: artifacts]
+[2026-02-04 16:04:59,062: ERROR: main: name 'recall_score' is not defined]
+Traceback (most recent call last):
+  File "/home/ikp-4090/june/main.py", line 59, in <module>
+    model_evalution.main()
+  File "/home/ikp-4090/june/src/fraud_prediction/pipeline/stage_04_model_evaluation.py", line 18, in main
+    evaluation.evaluation()
+  File "/home/ikp-4090/june/src/fraud_prediction/components/model_evaluation_mlflow.py", line 78, in evaluation
+    self.recall = recall_score(self.y_valid, y_pred)
+                  ^^^^^^^^^^^^
+NameError: name 'recall_score' is not defined
+[2026-02-04 16:06:32,142: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 16:06:32,144: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 16:06:32,145: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 16:06:32,145: INFO: common: created directory at: artifacts]
+[2026-02-04 16:06:32,145: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 16:06:32,295: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-02-04 16:06:32,295: INFO: main: ***************]
+[2026-02-04 16:06:32,295: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-02-04 16:06:32,296: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 16:06:32,296: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 16:06:32,296: INFO: common: created directory at: artifacts]
+[2026-02-04 16:06:32,296: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-02-04 16:06:32,331: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 16:06:32,336: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model.h5]
+[2026-02-04 16:06:32,344: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 16:06:32,348: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model_updated.h5]
+[2026-02-04 16:06:32,348: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-02-04 16:06:32,348: INFO: main: *******************]
+[2026-02-04 16:06:32,348: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-02-04 16:06:32,349: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 16:06:32,349: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 16:06:32,349: INFO: common: created directory at: artifacts]
+[2026-02-04 16:06:32,350: INFO: common: created directory at: artifacts/training]
+[2026-02-04 16:06:32,362: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-02-04 16:07:03,885: INFO: main: >>>>>> stage Model Training completed <<<<<<
+
+x==========x]
+[2026-02-04 16:07:03,885: INFO: main: *******************]
+[2026-02-04 16:07:03,885: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-02-04 16:07:03,886: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 16:07:03,887: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 16:07:03,887: INFO: common: created directory at: artifacts]
+[2026-02-04 16:07:14,585: INFO: common: json file saved at: scores.json]
+[2026-02-04 16:07:14,593: INFO: common: json file saved at: scores.json]
+[2026-02-04 16:07:35,910: INFO: main: >>>>>> stage Evaluation stage completed <<<<<<
+
+x==========x]
+[2026-02-04 16:20:18,728: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 16:20:18,729: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 16:20:18,729: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 16:20:18,729: INFO: common: created directory at: artifacts]
+[2026-02-04 16:20:18,729: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 16:20:18,877: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-02-04 16:20:18,877: INFO: main: ***************]
+[2026-02-04 16:20:18,877: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-02-04 16:20:18,878: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 16:20:18,878: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 16:20:18,878: INFO: common: created directory at: artifacts]
+[2026-02-04 16:20:18,878: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-02-04 16:20:18,914: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 16:20:18,919: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model.h5]
+[2026-02-04 16:20:18,927: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 16:20:18,931: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model_updated.h5]
+[2026-02-04 16:20:18,931: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-02-04 16:20:18,931: INFO: main: *******************]
+[2026-02-04 16:20:18,931: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-02-04 16:20:18,932: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 16:20:18,932: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 16:20:18,932: INFO: common: created directory at: artifacts]
+[2026-02-04 16:20:18,932: INFO: common: created directory at: artifacts/training]
+[2026-02-04 16:20:18,944: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-02-04 16:21:07,384: WARNING: connectionpool: Connection pool is full, discarding connection: dagshub.com. Connection pool size: 10]
+[2026-02-04 16:21:24,412: INFO: main: >>>>>> stage Model Training completed <<<<<<
+
+x==========x]
+[2026-02-04 16:21:24,412: INFO: main: *******************]
+[2026-02-04 16:21:24,412: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-02-04 16:21:24,412: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 16:21:24,413: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 16:21:24,413: INFO: common: created directory at: artifacts]
+[2026-02-04 16:21:35,152: INFO: common: json file saved at: scores.json]
+[2026-02-04 16:21:35,160: INFO: common: json file saved at: scores.json]
+[2026-02-04 16:21:56,446: INFO: main: >>>>>> stage Evaluation stage completed <<<<<<
+
+x==========x]
+[2026-02-04 16:33:40,239: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 16:33:40,240: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 16:33:40,240: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 16:33:40,240: INFO: common: created directory at: artifacts]
+[2026-02-04 16:33:40,240: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 16:33:40,400: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-02-04 16:33:40,400: INFO: main: ***************]
+[2026-02-04 16:33:40,400: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-02-04 16:33:40,400: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 16:33:40,401: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 16:33:40,401: INFO: common: created directory at: artifacts]
+[2026-02-04 16:33:40,401: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-02-04 16:33:40,436: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 16:33:40,441: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model.h5]
+[2026-02-04 16:33:40,449: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 16:33:40,453: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model_updated.h5]
+[2026-02-04 16:33:40,453: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-02-04 16:33:40,453: INFO: main: *******************]
+[2026-02-04 16:33:40,453: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-02-04 16:33:40,454: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 16:33:40,454: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 16:33:40,454: INFO: common: created directory at: artifacts]
+[2026-02-04 16:33:40,455: INFO: common: created directory at: artifacts/training]
+[2026-02-04 16:33:40,468: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-02-04 16:34:27,074: WARNING: connectionpool: Connection pool is full, discarding connection: dagshub.com. Connection pool size: 10]
+[2026-02-04 16:34:50,515: INFO: main: >>>>>> stage Model Training completed <<<<<<
+
+x==========x]
+[2026-02-04 16:34:50,515: INFO: main: *******************]
+[2026-02-04 16:34:50,515: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-02-04 16:34:50,516: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 16:34:50,516: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 16:34:50,516: INFO: common: created directory at: artifacts]
+[2026-02-04 16:35:01,261: INFO: common: json file saved at: scores.json]
+[2026-02-04 16:35:01,269: INFO: common: json file saved at: scores.json]
+[2026-02-04 16:35:22,549: INFO: main: >>>>>> stage Evaluation stage completed <<<<<<
+
+x==========x]
+[2026-02-04 17:06:44,139: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 17:06:44,140: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 17:06:44,140: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 17:06:44,140: INFO: common: created directory at: artifacts]
+[2026-02-04 17:06:44,140: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 17:06:44,288: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-02-04 17:06:44,288: INFO: main: ***************]
+[2026-02-04 17:06:44,288: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-02-04 17:06:44,289: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 17:06:44,289: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 17:06:44,289: INFO: common: created directory at: artifacts]
+[2026-02-04 17:06:44,289: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-02-04 17:06:44,323: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 17:06:44,328: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model.h5]
+[2026-02-04 17:06:44,336: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 17:06:44,341: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model_updated.h5]
+[2026-02-04 17:06:44,341: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-02-04 17:06:44,341: INFO: main: *******************]
+[2026-02-04 17:06:44,341: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-02-04 17:06:44,341: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 17:06:44,342: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 17:06:44,342: INFO: common: created directory at: artifacts]
+[2026-02-04 17:06:44,342: INFO: common: created directory at: artifacts/training]
+[2026-02-04 17:06:44,669: INFO: stage_03_model_trainer: Active Parent Run ID : 7fd02c58c3e94f219adfa6c276d225f1]
+[2026-02-04 17:06:44,978: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-02-04 17:07:32,908: WARNING: connectionpool: Connection pool is full, discarding connection: dagshub.com. Connection pool size: 10]
+[2026-02-04 17:07:50,857: INFO: main: >>>>>> stage Model Training completed <<<<<<
+
+x==========x]
+[2026-02-04 17:07:50,857: INFO: main: *******************]
+[2026-02-04 17:07:50,857: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-02-04 17:07:50,858: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 17:07:50,859: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 17:07:50,859: INFO: common: created directory at: artifacts]
+[2026-02-04 17:08:01,833: INFO: common: json file saved at: scores.json]
+[2026-02-04 17:08:01,842: INFO: common: json file saved at: scores.json]
+[2026-02-04 17:08:23,122: INFO: main: >>>>>> stage Evaluation stage completed <<<<<<
+
+x==========x]
+[2026-02-04 17:50:45,400: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 17:50:45,401: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 17:50:45,401: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 17:50:45,401: INFO: common: created directory at: artifacts]
+[2026-02-04 17:50:45,401: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 17:50:45,550: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-02-04 17:50:45,550: INFO: main: ***************]
+[2026-02-04 17:50:45,550: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-02-04 17:50:45,551: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 17:50:45,551: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 17:50:45,551: INFO: common: created directory at: artifacts]
+[2026-02-04 17:50:45,551: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-02-04 17:50:45,583: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 17:50:45,588: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model.h5]
+[2026-02-04 17:50:45,596: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 17:50:45,600: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model_updated.h5]
+[2026-02-04 17:50:45,601: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-02-04 17:50:45,601: INFO: main: *******************]
+[2026-02-04 17:50:45,601: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-02-04 17:50:45,601: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 17:50:45,602: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 17:50:45,602: INFO: common: created directory at: artifacts]
+[2026-02-04 17:50:45,602: INFO: common: created directory at: artifacts/training]
+[2026-02-04 17:50:45,931: INFO: stage_03_model_trainer: Active Parent Run ID : d2515339b5ef464a87a4a1394329f6a7]
+[2026-02-04 17:50:46,256: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-02-04 17:51:34,764: WARNING: connectionpool: Connection pool is full, discarding connection: dagshub.com. Connection pool size: 10]
+[2026-02-04 17:51:52,818: INFO: main: >>>>>> stage Model Training completed <<<<<<
+
+x==========x]
+[2026-02-04 17:51:52,818: INFO: main: *******************]
+[2026-02-04 17:51:52,818: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-02-04 17:51:52,819: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 17:51:52,819: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 17:51:52,819: INFO: common: created directory at: artifacts]
+[2026-02-04 17:52:03,493: INFO: common: json file saved at: scores.json]
+[2026-02-04 17:52:03,502: INFO: common: json file saved at: scores.json]
+[2026-02-04 17:52:03,810: ERROR: main: Cannot set a deleted experiment 'Fraud_Detection_System_V2' as the active experiment. You can restore the experiment, or permanently delete the experiment to create a new one.]
+Traceback (most recent call last):
+  File "/home/ikp-4090/june/main.py", line 58, in <module>
+    model_evalution.main()
+  File "/home/ikp-4090/june/src/fraud_prediction/pipeline/stage_04_model_evaluation.py", line 20, in main
+    evaluation.log_into_mlflow()
+  File "/home/ikp-4090/june/src/fraud_prediction/components/model_evaluation_mlflow.py", line 96, in log_into_mlflow
+    mlflow.set_experiment("Fraud_Detection_System_V2")
+  File "/home/ikp-4090/june/fraud_prediction/lib/python3.11/site-packages/mlflow/tracking/fluent.py", line 220, in set_experiment
+    raise MlflowException(
+mlflow.exceptions.MlflowException: Cannot set a deleted experiment 'Fraud_Detection_System_V2' as the active experiment. You can restore the experiment, or permanently delete the experiment to create a new one.
+[2026-02-04 18:13:56,323: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 18:13:56,323: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 18:13:56,324: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 18:13:56,324: INFO: common: created directory at: artifacts]
+[2026-02-04 18:13:56,324: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 18:13:56,482: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-02-04 18:13:56,482: INFO: main: ***************]
+[2026-02-04 18:13:56,482: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-02-04 18:13:56,483: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 18:13:56,483: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 18:13:56,483: INFO: common: created directory at: artifacts]
+[2026-02-04 18:13:56,483: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-02-04 18:13:57,062: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 18:13:57,068: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model.h5]
+[2026-02-04 18:13:57,082: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 18:13:57,087: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model_updated.h5]
+[2026-02-04 18:13:57,087: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-02-04 18:13:57,087: INFO: main: *******************]
+[2026-02-04 18:13:57,087: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-02-04 18:13:57,087: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 18:13:57,088: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 18:13:57,088: INFO: common: created directory at: artifacts]
+[2026-02-04 18:13:57,088: INFO: common: created directory at: artifacts/training]
+[2026-02-04 18:13:57,417: INFO: stage_03_model_trainer: Active Parent Run ID : fc577a3e48ee4e199bd76d3f46fe3438]
+[2026-02-04 18:13:57,774: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-02-04 18:14:44,456: WARNING: connectionpool: Connection pool is full, discarding connection: dagshub.com. Connection pool size: 10]
+[2026-02-04 18:15:05,443: INFO: main: >>>>>> stage Model Training completed <<<<<<
+
+x==========x]
+[2026-02-04 18:15:05,443: INFO: main: *******************]
+[2026-02-04 18:15:05,443: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-02-04 18:15:05,444: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 18:15:05,444: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 18:15:05,444: INFO: common: created directory at: artifacts]
+[2026-02-04 18:15:37,280: INFO: common: json file saved at: scores.json]
+[2026-02-04 18:15:37,280: INFO: common: json file saved at: scores.json]
+[2026-02-04 18:15:37,592: ERROR: main: Cannot set a deleted experiment 'Fraud_Detection_System_V2' as the active experiment. You can restore the experiment, or permanently delete the experiment to create a new one.]
+Traceback (most recent call last):
+  File "/home/ikp-4090/june/main.py", line 58, in <module>
+    model_evalution.main()
+  File "/home/ikp-4090/june/src/fraud_prediction/pipeline/stage_04_model_evaluation.py", line 20, in main
+    evaluation.log_into_mlflow()
+  File "/home/ikp-4090/june/src/fraud_prediction/components/model_evaluation_mlflow.py", line 96, in log_into_mlflow
+    mlflow.set_experiment("Fraud_Detection_System_V2")
+  File "/home/ikp-4090/june/fraud_prediction/lib/python3.11/site-packages/mlflow/tracking/fluent.py", line 220, in set_experiment
+    raise MlflowException(
+mlflow.exceptions.MlflowException: Cannot set a deleted experiment 'Fraud_Detection_System_V2' as the active experiment. You can restore the experiment, or permanently delete the experiment to create a new one.
+[2026-02-04 18:27:09,979: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 18:27:09,980: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 18:27:09,981: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 18:27:09,981: INFO: common: created directory at: artifacts]
+[2026-02-04 18:27:09,981: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 18:27:10,134: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-02-04 18:27:10,134: INFO: main: ***************]
+[2026-02-04 18:27:10,134: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-02-04 18:27:10,135: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 18:27:10,135: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 18:27:10,135: INFO: common: created directory at: artifacts]
+[2026-02-04 18:27:10,135: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-02-04 18:27:10,705: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 18:27:10,710: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model.h5]
+[2026-02-04 18:27:10,719: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 18:27:10,723: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model_updated.h5]
+[2026-02-04 18:27:10,723: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-02-04 18:27:10,723: INFO: main: *******************]
+[2026-02-04 18:27:10,723: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-02-04 18:27:10,724: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 18:27:10,724: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 18:27:10,724: INFO: common: created directory at: artifacts]
+[2026-02-04 18:27:10,725: INFO: common: created directory at: artifacts/training]
+[2026-02-04 18:27:11,043: INFO: stage_03_model_trainer: Active Parent Run ID : 9b7cae40c1e646afba188ffb1b9eaf4e]
+[2026-02-04 18:27:11,344: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-02-04 18:27:54,261: WARNING: connectionpool: Connection pool is full, discarding connection: dagshub.com. Connection pool size: 10]
+[2026-02-04 18:28:19,103: INFO: main: >>>>>> stage Model Training completed <<<<<<
+
+x==========x]
+[2026-02-04 18:28:19,103: INFO: main: *******************]
+[2026-02-04 18:28:19,103: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-02-04 18:28:19,103: ERROR: main: EvaluationPipeline.main() missing 1 required positional argument: 'experiment_name']
+Traceback (most recent call last):
+  File "/home/ikp-4090/june/main.py", line 58, in <module>
+    model_evalution.main()
+TypeError: EvaluationPipeline.main() missing 1 required positional argument: 'experiment_name'
+[2026-02-04 20:05:10,299: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 20:05:10,300: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:05:10,300: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:05:10,300: INFO: common: created directory at: artifacts]
+[2026-02-04 20:05:10,300: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 20:05:10,452: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-02-04 20:05:10,452: INFO: main: ***************]
+[2026-02-04 20:05:10,452: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-02-04 20:05:10,453: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:05:10,453: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:05:10,453: INFO: common: created directory at: artifacts]
+[2026-02-04 20:05:10,453: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-02-04 20:05:11,037: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 20:05:11,042: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model.h5]
+[2026-02-04 20:05:11,051: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 20:05:11,056: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model_updated.h5]
+[2026-02-04 20:05:11,057: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-02-04 20:05:11,057: INFO: main: *******************]
+[2026-02-04 20:05:11,057: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-02-04 20:05:11,057: ERROR: main: ModelTrainingPipeline.main() got an unexpected keyword argument 'experiment_name']
+Traceback (most recent call last):
+  File "/home/ikp-4090/june/main.py", line 48, in <module>
+    model_trainer.main(experiment_name=EXPERIMENT_NAME)
+TypeError: ModelTrainingPipeline.main() got an unexpected keyword argument 'experiment_name'
+[2026-02-04 20:07:37,342: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 20:07:37,343: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:07:37,343: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:07:37,343: INFO: common: created directory at: artifacts]
+[2026-02-04 20:07:37,343: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 20:07:37,491: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-02-04 20:07:37,492: INFO: main: ***************]
+[2026-02-04 20:07:37,492: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-02-04 20:07:37,492: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:07:37,493: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:07:37,493: INFO: common: created directory at: artifacts]
+[2026-02-04 20:07:37,493: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-02-04 20:07:38,075: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 20:07:38,080: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model.h5]
+[2026-02-04 20:07:38,089: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 20:07:38,094: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model_updated.h5]
+[2026-02-04 20:07:38,094: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-02-04 20:07:38,094: INFO: main: *******************]
+[2026-02-04 20:07:38,094: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-02-04 20:07:38,094: ERROR: main: ModelTrainingPipeline.main() got an unexpected keyword argument 'experiment_name']
+Traceback (most recent call last):
+  File "/home/ikp-4090/june/main.py", line 48, in <module>
+    model_trainer.main(experiment_name=EXPERIMENT_NAME)
+TypeError: ModelTrainingPipeline.main() got an unexpected keyword argument 'experiment_name'
+[2026-02-04 20:09:40,227: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 20:09:40,228: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:09:40,228: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:09:40,228: INFO: common: created directory at: artifacts]
+[2026-02-04 20:09:40,228: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 20:09:40,375: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-02-04 20:09:40,375: INFO: main: ***************]
+[2026-02-04 20:09:40,375: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-02-04 20:09:40,376: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:09:40,377: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:09:40,377: INFO: common: created directory at: artifacts]
+[2026-02-04 20:09:40,377: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-02-04 20:09:40,952: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 20:09:40,957: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model.h5]
+[2026-02-04 20:09:40,966: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 20:09:40,971: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model_updated.h5]
+[2026-02-04 20:09:40,971: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-02-04 20:09:40,971: INFO: main: *******************]
+[2026-02-04 20:09:40,971: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-02-04 20:09:40,971: ERROR: main: ModelTrainingPipeline.main() got an unexpected keyword argument 'experiment_name']
+Traceback (most recent call last):
+  File "/home/ikp-4090/june/main.py", line 48, in <module>
+    model_trainer.main(experiment_name=EXPERIMENT_NAME)
+TypeError: ModelTrainingPipeline.main() got an unexpected keyword argument 'experiment_name'
+[2026-02-04 20:13:46,142: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 20:13:46,143: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:13:46,143: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:13:46,143: INFO: common: created directory at: artifacts]
+[2026-02-04 20:13:46,143: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 20:13:46,291: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-02-04 20:13:46,291: INFO: main: ***************]
+[2026-02-04 20:13:46,291: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-02-04 20:13:46,291: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:13:46,292: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:13:46,292: INFO: common: created directory at: artifacts]
+[2026-02-04 20:13:46,292: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-02-04 20:13:46,868: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 20:13:46,873: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model.h5]
+[2026-02-04 20:13:46,882: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 20:13:46,887: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model_updated.h5]
+[2026-02-04 20:13:46,887: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-02-04 20:13:46,887: INFO: main: *******************]
+[2026-02-04 20:13:46,887: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-02-04 20:13:46,887: ERROR: main: ModelTrainingPipeline.main() got an unexpected keyword argument 'experiment_name']
+Traceback (most recent call last):
+  File "/home/ikp-4090/june/main.py", line 48, in <module>
+    model_trainer.main(experiment_name=EXPERIMENT_NAME)
+TypeError: ModelTrainingPipeline.main() got an unexpected keyword argument 'experiment_name'
+[2026-02-04 20:15:10,318: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 20:15:10,318: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:15:10,319: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:15:10,319: INFO: common: created directory at: artifacts]
+[2026-02-04 20:15:10,319: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 20:15:10,466: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-02-04 20:15:10,466: INFO: main: ***************]
+[2026-02-04 20:15:10,466: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-02-04 20:15:10,467: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:15:10,467: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:15:10,467: INFO: common: created directory at: artifacts]
+[2026-02-04 20:15:10,467: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-02-04 20:15:11,046: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 20:15:11,051: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model.h5]
+[2026-02-04 20:15:11,060: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 20:15:11,065: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model_updated.h5]
+[2026-02-04 20:15:11,065: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-02-04 20:15:11,065: INFO: main: *******************]
+[2026-02-04 20:15:11,065: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-02-04 20:15:11,065: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:15:11,066: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:15:11,066: INFO: common: created directory at: artifacts]
+[2026-02-04 20:15:11,066: INFO: common: created directory at: artifacts/training]
+[2026-02-04 20:15:11,690: INFO: stage_03_model_trainer: Active Parent Run ID : 11c6c5202d914a9fb9c02f8986669bf8]
+[2026-02-04 20:15:12,017: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-02-04 20:15:13,166: ERROR: main: Training.train() got an unexpected keyword argument 'experiment_name']
+Traceback (most recent call last):
+  File "/home/ikp-4090/june/main.py", line 48, in <module>
+    model_trainer.main(experiment_name=EXPERIMENT_NAME)
+  File "/home/ikp-4090/june/src/fraud_prediction/pipeline/stage_03_model_trainer.py", line 31, in main
+    training.train(experiment_name=experiment_name) #create child run in side this step
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Training.train() got an unexpected keyword argument 'experiment_name'
+[2026-02-04 20:18:30,857: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 20:18:30,858: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:18:30,858: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:18:30,858: INFO: common: created directory at: artifacts]
+[2026-02-04 20:18:30,858: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 20:18:31,006: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-02-04 20:18:31,006: INFO: main: ***************]
+[2026-02-04 20:18:31,006: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-02-04 20:18:31,007: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:18:31,007: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:18:31,007: INFO: common: created directory at: artifacts]
+[2026-02-04 20:18:31,007: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-02-04 20:18:31,593: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 20:18:31,598: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model.h5]
+[2026-02-04 20:18:31,607: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 20:18:31,612: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model_updated.h5]
+[2026-02-04 20:18:31,612: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-02-04 20:18:31,612: INFO: main: *******************]
+[2026-02-04 20:18:31,612: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-02-04 20:18:31,613: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:18:31,613: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:18:31,613: INFO: common: created directory at: artifacts]
+[2026-02-04 20:18:31,613: INFO: common: created directory at: artifacts/training]
+[2026-02-04 20:18:32,269: INFO: stage_03_model_trainer: Active Parent Run ID : 5693cf69639b4871ae727fe5b8357274]
+[2026-02-04 20:18:32,584: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-02-04 20:18:33,687: ERROR: main: Training.train() got an unexpected keyword argument 'experiment_name']
+Traceback (most recent call last):
+  File "/home/ikp-4090/june/main.py", line 48, in <module>
+    model_trainer.main(experiment_name=EXPERIMENT_NAME)
+  File "/home/ikp-4090/june/src/fraud_prediction/pipeline/stage_03_model_trainer.py", line 31, in main
+    training.train(experiment_name=experiment_name) #create child run in side this step
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Training.train() got an unexpected keyword argument 'experiment_name'
+[2026-02-04 20:22:55,365: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 20:22:55,366: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:22:55,366: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:22:55,366: INFO: common: created directory at: artifacts]
+[2026-02-04 20:22:55,366: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 20:22:55,524: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-02-04 20:22:55,524: INFO: main: ***************]
+[2026-02-04 20:22:55,524: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-02-04 20:22:55,525: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:22:55,525: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:22:55,525: INFO: common: created directory at: artifacts]
+[2026-02-04 20:22:55,525: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-02-04 20:22:56,112: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 20:22:56,117: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model.h5]
+[2026-02-04 20:22:56,126: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 20:22:56,130: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model_updated.h5]
+[2026-02-04 20:22:56,130: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-02-04 20:22:56,130: INFO: main: *******************]
+[2026-02-04 20:22:56,130: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-02-04 20:22:56,131: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:22:56,131: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:22:56,131: INFO: common: created directory at: artifacts]
+[2026-02-04 20:22:56,131: INFO: common: created directory at: artifacts/training]
+[2026-02-04 20:22:56,777: INFO: stage_03_model_trainer: Active Parent Run ID : 4c300104656b417daf71817a4278e2eb]
+[2026-02-04 20:22:57,095: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-02-04 20:23:44,514: WARNING: connectionpool: Connection pool is full, discarding connection: dagshub.com. Connection pool size: 10]
+[2026-02-04 20:24:06,429: INFO: main: >>>>>> stage Model Training completed <<<<<<
+
+x==========x]
+[2026-02-04 20:24:06,429: INFO: main: *******************]
+[2026-02-04 20:24:06,429: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-02-04 20:24:06,429: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:24:06,430: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:24:06,430: INFO: common: created directory at: artifacts]
+[2026-02-04 20:24:23,454: INFO: common: json file saved at: scores.json]
+[2026-02-04 20:24:23,462: INFO: common: json file saved at: scores.json]
+[2026-02-04 20:24:23,462: ERROR: main: name 'experiment_name' is not defined]
+Traceback (most recent call last):
+  File "/home/ikp-4090/june/main.py", line 59, in <module>
+    model_evalution.main(experiment_name=EXPERIMENT_NAME)
+  File "/home/ikp-4090/june/src/fraud_prediction/pipeline/stage_04_model_evaluation.py", line 20, in main
+    evaluation.log_into_mlflow()
+  File "/home/ikp-4090/june/src/fraud_prediction/components/model_evaluation_mlflow.py", line 96, in log_into_mlflow
+    mlflow.set_experiment(experiment_name)
+                          ^^^^^^^^^^^^^^^
+NameError: name 'experiment_name' is not defined
+[2026-02-04 20:27:02,488: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 20:27:02,488: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:27:02,489: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:27:02,489: INFO: common: created directory at: artifacts]
+[2026-02-04 20:27:02,489: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 20:27:02,636: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-02-04 20:27:02,636: INFO: main: ***************]
+[2026-02-04 20:27:02,636: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-02-04 20:27:02,637: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:27:02,637: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:27:02,637: INFO: common: created directory at: artifacts]
+[2026-02-04 20:27:02,637: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-02-04 20:27:03,219: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 20:27:03,225: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model.h5]
+[2026-02-04 20:27:03,235: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 20:27:03,239: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model_updated.h5]
+[2026-02-04 20:27:03,239: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-02-04 20:27:03,239: INFO: main: *******************]
+[2026-02-04 20:27:03,239: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-02-04 20:27:03,240: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:27:03,240: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:27:03,241: INFO: common: created directory at: artifacts]
+[2026-02-04 20:27:03,241: INFO: common: created directory at: artifacts/training]
+[2026-02-04 20:27:03,844: INFO: stage_03_model_trainer: Active Parent Run ID : 976de04406c34b2ebf85f53ad8d1f37f]
+[2026-02-04 20:27:04,163: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-02-04 20:27:52,699: WARNING: connectionpool: Connection pool is full, discarding connection: dagshub.com. Connection pool size: 10]
+[2026-02-04 20:28:13,562: INFO: main: >>>>>> stage Model Training completed <<<<<<
+
+x==========x]
+[2026-02-04 20:28:13,562: INFO: main: *******************]
+[2026-02-04 20:28:13,562: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-02-04 20:28:13,563: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:28:13,563: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:28:13,563: INFO: common: created directory at: artifacts]
+[2026-02-04 20:28:31,150: INFO: common: json file saved at: scores.json]
+[2026-02-04 20:28:31,150: INFO: common: json file saved at: scores.json]
+[2026-02-04 20:28:31,150: ERROR: main: name 'experiment_name' is not defined]
+Traceback (most recent call last):
+  File "/home/ikp-4090/june/main.py", line 59, in <module>
+    model_evalution.main(experiment_name=EXPERIMENT_NAME)
+  File "/home/ikp-4090/june/src/fraud_prediction/pipeline/stage_04_model_evaluation.py", line 20, in main
+    evaluation.log_into_mlflow()
+  File "/home/ikp-4090/june/src/fraud_prediction/components/model_evaluation_mlflow.py", line 96, in log_into_mlflow
+    mlflow.set_experiment(experiment_name)
+                          ^^^^^^^^^^^^^^^
+NameError: name 'experiment_name' is not defined
+[2026-02-04 20:29:47,505: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 20:29:47,505: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:29:47,506: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:29:47,506: INFO: common: created directory at: artifacts]
+[2026-02-04 20:29:47,506: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 20:29:47,654: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-02-04 20:29:47,654: INFO: main: ***************]
+[2026-02-04 20:29:47,654: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-02-04 20:29:47,655: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:29:47,655: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:29:47,655: INFO: common: created directory at: artifacts]
+[2026-02-04 20:29:47,655: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-02-04 20:29:48,242: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 20:29:48,247: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model.h5]
+[2026-02-04 20:29:48,256: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 20:29:48,261: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model_updated.h5]
+[2026-02-04 20:29:48,261: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-02-04 20:29:48,261: INFO: main: *******************]
+[2026-02-04 20:29:48,261: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-02-04 20:29:48,262: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:29:48,262: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:29:48,262: INFO: common: created directory at: artifacts]
+[2026-02-04 20:29:48,262: INFO: common: created directory at: artifacts/training]
+[2026-02-04 20:29:48,900: INFO: stage_03_model_trainer: Active Parent Run ID : b7a6a9d5ae8e4b30a70a93c7632b640d]
+[2026-02-04 20:29:49,222: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-02-04 20:30:37,635: WARNING: connectionpool: Connection pool is full, discarding connection: dagshub.com. Connection pool size: 10]
+[2026-02-04 20:30:58,568: INFO: main: >>>>>> stage Model Training completed <<<<<<
+
+x==========x]
+[2026-02-04 20:30:58,568: INFO: main: *******************]
+[2026-02-04 20:30:58,568: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-02-04 20:30:58,569: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:30:58,569: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:30:58,569: INFO: common: created directory at: artifacts]
+[2026-02-04 20:31:15,803: INFO: common: json file saved at: scores.json]
+[2026-02-04 20:31:15,804: INFO: common: json file saved at: scores.json]
+[2026-02-04 20:31:37,771: INFO: main: >>>>>> stage Evaluation stage completed <<<<<<
+
+x==========x]
+[2026-02-04 20:36:53,857: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 20:36:53,858: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:36:53,859: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:36:53,859: INFO: common: created directory at: artifacts]
+[2026-02-04 20:36:53,859: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 20:36:54,006: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-02-04 20:36:54,006: INFO: main: ***************]
+[2026-02-04 20:36:54,006: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-02-04 20:36:54,007: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:36:54,007: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:36:54,007: INFO: common: created directory at: artifacts]
+[2026-02-04 20:36:54,007: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-02-04 20:36:54,585: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 20:36:54,591: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model.h5]
+[2026-02-04 20:36:54,600: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 20:36:54,605: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model_updated.h5]
+[2026-02-04 20:36:54,605: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-02-04 20:36:54,605: INFO: main: *******************]
+[2026-02-04 20:36:54,605: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-02-04 20:36:54,605: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:36:54,606: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:36:54,606: INFO: common: created directory at: artifacts]
+[2026-02-04 20:36:54,606: INFO: common: created directory at: artifacts/training]
+[2026-02-04 20:36:55,225: INFO: stage_03_model_trainer: Active Parent Run ID : 28a2f56e36334832babe60173921fc95]
+[2026-02-04 20:36:55,531: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-02-04 20:37:43,890: WARNING: connectionpool: Connection pool is full, discarding connection: dagshub.com. Connection pool size: 10]
+[2026-02-04 20:38:04,914: INFO: main: >>>>>> stage Model Training completed <<<<<<
+
+x==========x]
+[2026-02-04 20:38:04,914: INFO: main: *******************]
+[2026-02-04 20:38:04,914: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-02-04 20:38:04,914: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:38:04,915: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:38:04,915: INFO: common: created directory at: artifacts]
+[2026-02-04 20:38:22,079: INFO: common: json file saved at: scores.json]
+[2026-02-04 20:38:22,080: INFO: common: json file saved at: scores.json]
+[2026-02-04 20:38:43,830: INFO: main: >>>>>> stage Evaluation stage completed <<<<<<
+
+x==========x]
+[2026-02-04 20:46:56,829: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 20:46:56,830: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:46:56,830: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:46:56,831: INFO: common: created directory at: artifacts]
+[2026-02-04 20:46:56,831: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 20:46:56,991: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-02-04 20:46:56,991: INFO: main: ***************]
+[2026-02-04 20:46:56,991: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-02-04 20:46:56,992: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:46:56,992: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:46:56,992: INFO: common: created directory at: artifacts]
+[2026-02-04 20:46:56,992: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-02-04 20:46:57,573: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 20:46:57,579: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model.h5]
+[2026-02-04 20:46:57,587: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 20:46:57,592: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model_updated.h5]
+[2026-02-04 20:46:57,592: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-02-04 20:46:57,592: INFO: main: *******************]
+[2026-02-04 20:46:57,592: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-02-04 20:46:57,592: ERROR: main: ModelTrainingPipeline.main() got an unexpected keyword argument 'experiment_name']
+Traceback (most recent call last):
+  File "/home/ikp-4090/june/main.py", line 50, in <module>
+    model_trainer.main(experiment_name=EXPERIMENT_NAME)
+TypeError: ModelTrainingPipeline.main() got an unexpected keyword argument 'experiment_name'
+[2026-02-04 20:51:21,534: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 20:51:21,535: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:51:21,535: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:51:21,535: INFO: common: created directory at: artifacts]
+[2026-02-04 20:51:21,536: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 20:51:21,685: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-02-04 20:51:21,685: INFO: main: ***************]
+[2026-02-04 20:51:21,685: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-02-04 20:51:21,686: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:51:21,686: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:51:21,686: INFO: common: created directory at: artifacts]
+[2026-02-04 20:51:21,686: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-02-04 20:51:22,272: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 20:51:22,278: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model.h5]
+[2026-02-04 20:51:22,286: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 20:51:22,291: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model_updated.h5]
+[2026-02-04 20:51:22,291: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-02-04 20:51:22,291: INFO: main: *******************]
+[2026-02-04 20:51:22,291: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-02-04 20:51:22,292: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:51:22,292: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:51:22,292: INFO: common: created directory at: artifacts]
+[2026-02-04 20:51:22,292: INFO: common: created directory at: artifacts/training]
+[2026-02-04 20:51:23,533: ERROR: main: name 'run' is not defined]
+Traceback (most recent call last):
+  File "/home/ikp-4090/june/main.py", line 50, in <module>
+    model_trainer.main(experiment_name=EXPERIMENT_NAME)
+  File "/home/ikp-4090/june/src/fraud_prediction/pipeline/stage_03_model_trainer.py", line 24, in main
+    logger.info(f"Active Parent Run ID : {run.info.run_id}")
+                                          ^^^
+NameError: name 'run' is not defined
+[2026-02-04 20:52:31,569: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 20:52:31,570: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:52:31,570: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:52:31,570: INFO: common: created directory at: artifacts]
+[2026-02-04 20:52:31,570: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 20:52:31,731: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-02-04 20:52:31,731: INFO: main: ***************]
+[2026-02-04 20:52:31,731: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-02-04 20:52:31,732: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:52:31,732: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:52:31,732: INFO: common: created directory at: artifacts]
+[2026-02-04 20:52:31,732: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-02-04 20:52:32,306: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 20:52:32,311: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model.h5]
+[2026-02-04 20:52:32,320: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 20:52:32,324: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model_updated.h5]
+[2026-02-04 20:52:32,324: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-02-04 20:52:32,324: INFO: main: *******************]
+[2026-02-04 20:52:32,324: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-02-04 20:52:32,325: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:52:32,325: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:52:32,325: INFO: common: created directory at: artifacts]
+[2026-02-04 20:52:32,325: INFO: common: created directory at: artifacts/training]
+[2026-02-04 20:52:33,620: ERROR: main: name 'run' is not defined]
+Traceback (most recent call last):
+  File "/home/ikp-4090/june/main.py", line 50, in <module>
+    model_trainer.main(experiment_name=EXPERIMENT_NAME)
+  File "/home/ikp-4090/june/src/fraud_prediction/pipeline/stage_03_model_trainer.py", line 24, in main
+    logger.info(f"Active Parent Run ID : {run.info.run_id}")
+                                          ^^^
+NameError: name 'run' is not defined
+[2026-02-04 20:53:44,392: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 20:53:44,393: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:53:44,394: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:53:44,394: INFO: common: created directory at: artifacts]
+[2026-02-04 20:53:44,394: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 20:53:44,544: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-02-04 20:53:44,544: INFO: main: ***************]
+[2026-02-04 20:53:44,544: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-02-04 20:53:44,545: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:53:44,545: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:53:44,545: INFO: common: created directory at: artifacts]
+[2026-02-04 20:53:44,545: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-02-04 20:53:45,148: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 20:53:45,154: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model.h5]
+[2026-02-04 20:53:45,163: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 20:53:45,168: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model_updated.h5]
+[2026-02-04 20:53:45,168: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-02-04 20:53:45,168: INFO: main: *******************]
+[2026-02-04 20:53:45,168: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-02-04 20:53:45,168: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:53:45,169: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:53:45,169: INFO: common: created directory at: artifacts]
+[2026-02-04 20:53:45,169: INFO: common: created directory at: artifacts/training]
+[2026-02-04 20:53:45,747: INFO: stage_03_model_trainer: Active Parent Run ID : 4af95da0f219401ab354a79ac1a90bb2]
+[2026-02-04 20:53:46,094: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-02-04 20:54:31,085: WARNING: connectionpool: Connection pool is full, discarding connection: dagshub.com. Connection pool size: 10]
+[2026-02-04 20:54:56,103: INFO: main: >>>>>> stage Model Training completed <<<<<<
+
+x==========x]
+[2026-02-04 20:54:56,103: INFO: main: *******************]
+[2026-02-04 20:54:56,103: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-02-04 20:54:56,104: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:54:56,104: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:54:56,104: INFO: common: created directory at: artifacts]
+[2026-02-04 20:55:13,485: INFO: common: json file saved at: scores.json]
+[2026-02-04 20:55:13,493: INFO: common: json file saved at: scores.json]
+[2026-02-04 20:55:13,493: ERROR: main: name 'mlflow' is not defined]
+Traceback (most recent call last):
+  File "/home/ikp-4090/june/main.py", line 61, in <module>
+    model_evalution.main(experiment_name=EXPERIMENT_NAME)
+  File "/home/ikp-4090/june/src/fraud_prediction/pipeline/stage_04_model_evaluation.py", line 21, in main
+    with mlflow.start_run(run_name="Stage_04_Model_Evaluation", nested=True):
+         ^^^^^^
+NameError: name 'mlflow' is not defined
+[2026-02-04 20:56:31,134: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 20:56:31,135: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:56:31,135: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:56:31,135: INFO: common: created directory at: artifacts]
+[2026-02-04 20:56:31,136: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 20:56:31,294: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-02-04 20:56:31,295: INFO: main: ***************]
+[2026-02-04 20:56:31,295: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-02-04 20:56:31,295: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:56:31,296: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:56:31,296: INFO: common: created directory at: artifacts]
+[2026-02-04 20:56:31,296: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-02-04 20:56:31,881: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 20:56:31,886: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model.h5]
+[2026-02-04 20:56:31,896: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 20:56:31,901: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model_updated.h5]
+[2026-02-04 20:56:31,901: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-02-04 20:56:31,901: INFO: main: *******************]
+[2026-02-04 20:56:31,901: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-02-04 20:56:31,902: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:56:31,902: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:56:31,902: INFO: common: created directory at: artifacts]
+[2026-02-04 20:56:31,902: INFO: common: created directory at: artifacts/training]
+[2026-02-04 20:56:32,678: INFO: stage_03_model_trainer: Active Parent Run ID : ff5f4974b8df4be29969a16e530d24d8]
+[2026-02-04 20:56:33,026: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-02-04 20:57:20,951: WARNING: connectionpool: Connection pool is full, discarding connection: dagshub.com. Connection pool size: 10]
+[2026-02-04 20:57:42,743: INFO: main: >>>>>> stage Model Training completed <<<<<<
+
+x==========x]
+[2026-02-04 20:57:42,743: INFO: main: *******************]
+[2026-02-04 20:57:42,743: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-02-04 20:57:42,743: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 20:57:42,744: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 20:57:42,744: INFO: common: created directory at: artifacts]
+[2026-02-04 20:58:00,246: INFO: common: json file saved at: scores.json]
+[2026-02-04 20:58:00,254: INFO: common: json file saved at: scores.json]
+[2026-02-04 20:58:01,447: ERROR: main: Run with UUID cf85f20514234743b94e2116b529acc4 is already active. To start a new run, first end the current run with mlflow.end_run(). To start a nested run, call start_run with nested=True]
+Traceback (most recent call last):
+  File "/home/ikp-4090/june/main.py", line 61, in <module>
+    model_evalution.main(experiment_name=EXPERIMENT_NAME)
+  File "/home/ikp-4090/june/src/fraud_prediction/pipeline/stage_04_model_evaluation.py", line 22, in main
+    evaluation.log_into_mlflow(experiment_name=experiment_name)
+  File "/home/ikp-4090/june/src/fraud_prediction/components/model_evaluation_mlflow.py", line 107, in log_into_mlflow
+    with mlflow.start_run(run_name=auto_run_name):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ikp-4090/june/fraud_prediction/lib/python3.11/site-packages/mlflow/tracking/fluent.py", line 443, in start_run
+    raise Exception(
+Exception: Run with UUID cf85f20514234743b94e2116b529acc4 is already active. To start a new run, first end the current run with mlflow.end_run(). To start a nested run, call start_run with nested=True
+[2026-02-04 21:04:10,853: INFO: main: >>>>>> Stage Data Ingestion stage started <<<<<<]
+[2026-02-04 21:04:10,854: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 21:04:10,854: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 21:04:10,854: INFO: common: created directory at: artifacts]
+[2026-02-04 21:04:10,855: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-02-04 21:04:11,004: INFO: main: >>>>>> Stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-02-04 21:04:11,004: INFO: main: ***************]
+[2026-02-04 21:04:11,004: INFO: main: >>>>>> Stage Prepare base model started <<<<<<]
+[2026-02-04 21:04:11,005: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 21:04:11,005: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 21:04:11,005: INFO: common: created directory at: artifacts]
+[2026-02-04 21:04:11,005: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-02-04 21:04:11,582: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 21:04:11,587: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model.h5]
+[2026-02-04 21:04:11,596: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-02-04 21:04:11,601: INFO: prepare_base_model: Model saved at: artifacts/prepare_base_model/base_model_updated.h5]
+[2026-02-04 21:04:11,601: INFO: main: >>>>>> Stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-02-04 21:04:11,601: INFO: main: *******************]
+[2026-02-04 21:04:11,601: INFO: main: >>>>>> stage Model Training started <<<<<<]
+[2026-02-04 21:04:11,601: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 21:04:11,602: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 21:04:11,602: INFO: common: created directory at: artifacts]
+[2026-02-04 21:04:11,602: INFO: common: created directory at: artifacts/training]
+[2026-02-04 21:04:12,239: INFO: stage_03_model_trainer: Active Parent Run ID : c2335b19e0264b2e9a0f7f1a191df62b]
+[2026-02-04 21:04:12,557: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-02-04 21:05:01,522: WARNING: connectionpool: Connection pool is full, discarding connection: dagshub.com. Connection pool size: 10]
+[2026-02-04 21:05:22,507: INFO: main: >>>>>> stage Model Training completed <<<<<<
+
+x==========x]
+[2026-02-04 21:05:22,507: INFO: main: *******************]
+[2026-02-04 21:05:22,507: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-02-04 21:05:22,507: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-02-04 21:05:22,508: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-02-04 21:05:22,508: INFO: common: created directory at: artifacts]
+[2026-02-04 21:05:39,943: INFO: common: json file saved at: scores.json]
+[2026-02-04 21:05:39,952: INFO: common: json file saved at: scores.json]
+[2026-02-04 21:06:02,882: INFO: main: >>>>>> stage Evaluation stage completed <<<<<<
+
+x==========x]

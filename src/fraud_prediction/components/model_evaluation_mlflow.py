@@ -9,6 +9,7 @@ from fraud_prediction.utils.common import save_json
 import os
 import glob
 from sklearn.preprocessing import MinMaxScaler
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 from mlflow.models.signature import infer_signature
 from fraud_prediction.entity.config_entity import EvaluationConfig
 from datetime import datetime
@@ -69,22 +70,30 @@ class Evaluation:
         # 1. Load model 
         self.model = self.load_model(self.config.path_of_model)
         self._prepare_validation_data()
+        
+        #Predic class (0 or 1)
+        y_pred_prob = self.model.predict(self.X_valid)
+        y_pred = (y_pred_prob > 0.5).astype(int)
 
         # Measure results by using Data Array
-        self.score = self.model.evaluate(self.X_valid, self.y_valid)
+        self.recall = recall_score(self.y_valid, y_pred)
+        self.precision = precision_score(self.y_valid, y_pred)
+        self.f1 = f1_score(self.y_valid, y_pred)
+        self.score = self.model.evaluate(self.X_valid, self.y_valid) # [loss, accuracy]
+        
         self.save_score()
 
     def save_score(self):
         scores = {"loss": self.score[0], "accuracy": self.score[1]}
         save_json(path=Path("scores.json"), data=scores)
 
-    def log_into_mlflow(self):
+    def log_into_mlflow(self, experiment_name):
         """ส่งผลลัพธ์ขึ้น DagsHub/MLflow """
         mlflow.set_tracking_uri(self.config.mlflow_uri)
         mlflow.set_registry_uri(self.config.mlflow_uri)
         tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
 
-        mlflow.set_experiment("Fraud_Detection_System_V2")
+        mlflow.set_experiment(experiment_name)
 
         if mlflow.active_run():
             mlflow.end_run()
@@ -95,17 +104,22 @@ class Evaluation:
         now = datetime.now().strftime("%Y%m%d_%H%M")
         auto_run_name = f"Initial_Run_After_Reset_{now}"
 
-        with mlflow.start_run(run_name=auto_run_name):
+        with mlflow.start_run(run_name=auto_run_name, nested=True):
             params = self.config.all_params
-            mlflow.log_param("epochs", int(params.EPOCHS))
-            mlflow.log_param("batch_size", int(params.BATCH_SIZE))
-            mlflow.log_param("learning_rate", float(params.LEARNING_RATE))
-            mlflow.log_param("num_features", int(params.NUM_FEATURES))
+            mlflow.log_params({
+                "epochs": int(params.EPOCHS),
+                "batch_size": int(params.BATCH_SIZE),
+                "learning_rate": float(params.LEARNING_RATE),
+                "num_features": int(params.NUM_FEATURES)
+            })
             
             # บันทึก Metrics
             mlflow.log_metrics({
                 "loss": float(self.score[0]), 
-                "accuracy": float(self.score[1])
+                "accuracy": float(self.score[1]),
+                "recall": float(self.recall),     # บอกว่า "จับคนโกงได้กี่ % จากคนโกงทั้งหมด"
+                "precision": float(self.precision), # บอกว่า "ที่ทายว่าโกง ใช่คนโกงจริงกี่ %"
+                "f1_score": float(self.f1)
             })
             
             # 2. ทำ Signature เพื่อบอกโครงสร้างข้อมูลที่โมเดลต้องการ
@@ -115,13 +129,12 @@ class Evaluation:
             # บันทึกโมเดลขึ้น Cloud (Model Registry)
             if tracking_url_type_store != "file":
                 mlflow.keras.log_model(
-                    #self.model, 
-                    #name="model"
                     model=self.model, 
-                    artifact_path="model", # ชื่อโฟลเดอร์เก็บไฟล์ใน Artifacts
-                    registered_model_name="FraudDetection_ANN" # ระบบจะสร้าง Version ให้อัตโนมัติในหน้า Models
+                    artifact_path="model", 
+                    registered_model_name="FraudDetection_Model", # ชื่อในหน้า Models
+                    signature=signature
                 )
-                print("Saved data to new experience: Done")
+                print("Saved data to DagsHub: Done")
             else:
                 mlflow.keras.log_model(
                     #self.model, name="model"

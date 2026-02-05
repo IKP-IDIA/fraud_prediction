@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 import numpy as np
+import mlflow 
 import urllib.request as request
 from zipfile import ZipFile
 import tensorflow as tf
@@ -10,6 +11,8 @@ from pathlib import Path
 import glob
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
+from imblearn.under_sampling import RandomUnderSampler
+from sklearn.metrics import recall_score, precision_score, f1_score
 
 class Training: 
     def __init__(self, config: TrainingConfig):
@@ -88,25 +91,64 @@ class Training:
         
         print(f" Prepared Data Done and จำนวน Features สุดท้าย: {self.X_train.shape[1]}")
 
-    def train(self):
-        """เริ่มเทรนโมเดล ANN (เวอร์ชันสมบูรณ์สำหรับข้อมูลตาราง)"""
+    def train(self, experiment_name):
+        """เริ่มเทรนโมเดล (เวอร์ชันสมบูรณ์สำหรับข้อมูลตาราง)"""
         # 1. แปลงเป็น Tensor เพื่อประสิทธิภาพและความเสถียรบน TensorFlow
         X_train_tensor = tf.convert_to_tensor(self.X_train, dtype=tf.float32)
         y_train_tensor = tf.convert_to_tensor(self.y_train, dtype=tf.float32)
         X_valid_tensor = tf.convert_to_tensor(self.X_valid, dtype=tf.float32)
         y_valid_tensor = tf.convert_to_tensor(self.y_valid, dtype=tf.float32)
+        
+        # Force Keras Autolog under Child Run
+        mlflow.keras.autolog(log_models=True)
+        
+        # 2. นำชื่อที่ส่งมาจากจุดศูนย์กลาง (main.py) มาใช้
+        mlflow.set_experiment(experiment_name)
 
-        print(f"เริ่มต้นการเทรนด้วยข้อมูล Shape: {X_train_tensor.shape}")
+        print(f"Starting to training data Shape: {X_train_tensor.shape}")
 
         # 2. Start to train 
-        self.history = self.model.fit(
-            X_train_tensor,
-            y_train_tensor,
-            epochs=self.config.params_epochs,
-            batch_size=self.config.params_batch_size,
-            validation_data=(X_valid_tensor, y_valid_tensor),
-            verbose=1
-        )
+        with mlflow.start_run(run_name="Model_Training_Fit",nested=True):
+        
+            # Log important parameter in Child
+            mlflow.log_params({
+                "epochs": self.config.params_epochs,
+                "batch_size": self.config.params_batch_size,
+                "sampling_ratio": self.config.params_sampling_ratio,
+                "input_features": self.X_train.shape[1]
+            })
+            
+            self.history = self.model.fit(
+                X_train_tensor,
+                y_train_tensor,
+                epochs=self.config.params_epochs,
+                batch_size=self.config.params_batch_size,
+                validation_data=(X_valid_tensor, y_valid_tensor),
+                verbose=1
+            )
+            
+            y_pred_prob = self.model.predict(X_valid_tensor)
+            y_pred = (y_pred_prob > 0.5).astype(int)  # Threshold ที่ 0.5
+            
+            # Statistic calculation
+            #y_pred = (self.model.predict(X_valid_tensor) > 0.5).astype(int)
+            recall = recall_score(self.y_valid, y_pred)
+            precision = precision_score(self.y_valid, y_pred, zero_division=0)
+            f1 = f1_score(self.y_valid, y_pred, zero_division=0)
+            
+            #Save to child run
+            mlflow.log_metrics({"recall": recall, "precision": precision, "f1_score": f1})
+            mlflow.log_artifact(self.config.trained_model_path)
+            
+        # Send all values to Parent Run
+        mlflow.log_metrics({
+          "final_recall": recall,
+          "final_precision": precision,
+          "final_f1_score": f1
+          })
+            
+        mlflow.log_param("parent_sampling_ratio", self.config.params_sampling_ratio)
+
 
         # 3. Save model
         self.save_model(

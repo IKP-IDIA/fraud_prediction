@@ -18,6 +18,7 @@ class DataIngestion:
             # Create destination directory 
             os.makedirs(os.path.dirname(zip_download_dir), exist_ok=True)
             file_id = "1xHzaCHq6gEXFmYN2Cc2Yb1jVxaAayb2y"
+            url = f'https://drive.google.com/uc?id={file_id}'
 
             if os.path.exists(self.config.local_data_file):
                 os.remove(self.config.local_data_file)
@@ -25,7 +26,7 @@ class DataIngestion:
 
             logger.info(f"Downloading data from : {file_id}")
 
-            gdown.download(id=file_id, output=str(zip_download_dir), quiet=False)
+            gdown.download(url, output=str(zip_download_dir), quiet=False, fuzzy=True)
 
             logger.info(f"Downloaded successfully into {zip_download_dir}")
 
